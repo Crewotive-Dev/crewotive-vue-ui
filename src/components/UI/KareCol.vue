@@ -4,7 +4,7 @@ export default {
   props: {
     col: {
       type: [String, Number],
-      default: "col-auto",
+      default: "auto",
     },
     sm: {
       type: [String, Number],
