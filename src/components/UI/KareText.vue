@@ -2,7 +2,7 @@
 export default {
   name: "KareTitle",
   props: {
-    is: {
+    el: {
       type: String,
       default: "p",
     },
@@ -24,12 +24,12 @@ export default {
 
 <template>
   <component
-    :is="is"
-    :class="[
-      color ? `text-${color}` : '',
-      weight ? `fw-${weight}` : '',
-      size ? `fs-${size}` : '',
-    ]"
+    :is="el"
+    :class="{
+      [`text-${color}`] : color,
+      [`fw-${weight}`] : weight,
+      [`fs-${size}`] : size
+    }"
   >
     <slot />
   </component>

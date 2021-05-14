@@ -2,9 +2,9 @@
 export default {
   name: "KareCol",
   props: {
-    cols: {
+    col: {
       type: [String, Number],
-      default: "",
+      default: "col-auto",
     },
     sm: {
       type: [String, Number],
@@ -24,12 +24,12 @@ export default {
 
 <template>
   <div
-    :class="[
-      cols ? `col-${cols}` : 'col',
-      sm ? `col-sm-${sm}` : '',
-      md ? `col-md-${md}` : '',
-      lg ? `col-lg-${lg}` : '',
-    ]"
+    :class="{
+      [`col-${col}`] : col,
+      [`col-sm-${sm}`] : sm,
+      [`col-md-${md}`] : md,
+      [`col-lg-${lg}`] : lg,
+      }"
   >
     <slot />
   </div>
