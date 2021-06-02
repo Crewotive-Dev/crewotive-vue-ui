@@ -12,12 +12,17 @@ export default {
 };
 </script>
 <template>
-  <KareContainer>
-    <KareRow>
-      <KareCol>
-        <KareText> Hello </KareText>
-        <KareButton @click="sayHello()" outline="primary">Say Hello</KareButton>
-      </KareCol>
-    </KareRow>
-  </KareContainer>
+  <CreContainer>
+    <CreRow>
+      <CreCol col="6" sm="6" lg="12">
+        <CreText> Hello </CreText>
+        <CreButton label='myButton' v-bg.primary.10.gradient @click=sayHello() color=orange>Say Hello</CreButton>
+      </CreCol>
+      <CreCol>
+        <CreText> Hello </CreText>
+        <CreButton label='myButton' @click="sayHello()" color="primary" outline>Say Hello</CreButton>
+        <CreButton label='myButton' @click="sayHello()" color="primary" outline>Say Hello</CreButton>
+      </CreCol>
+    </CreRow>
+  </CreContainer>
 </template>

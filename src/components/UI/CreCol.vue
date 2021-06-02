@@ -4,7 +4,7 @@ export default {
   props: {
     col: {
       type: [String, Number],
-      default: "auto",
+      default: "",
     },
     sm: {
       type: [String, Number],
@@ -24,12 +24,15 @@ export default {
 
 <template>
   <div
-    :class="{
-      [`col-${col}`] : col,
-      [`col-sm-${sm}`] : sm,
-      [`col-md-${md}`] : md,
-      [`col-lg-${lg}`] : lg,
-      }"
+    :class="
+      [
+        `col${col ? '-'+ col:''}`,
+        {
+          [`col-sm-${sm}`] : sm,
+          [`col-md-${md}`] : md,
+          [`col-lg-${lg}`] : lg,
+        }
+      ]"
   >
     <slot />
   </div>

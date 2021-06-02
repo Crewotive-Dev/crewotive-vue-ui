@@ -1,0 +1,29 @@
+$spacer: 1rem;
+$spacers: ();
+@for $s from 0 through 10{
+  $spacers: map-merge($spacers, (#{$s}: #{$s*$spacer}));
+}
+
+//  Add position options 10 each 10, from 10% to 100%
+@for $s from 1 through 9{
+  $position-values: map-merge($position-values, (#{$s*10}: calc(#{$s*10}*1%)));
+}
+$theme-colors: map-remove(map-merge($theme-colors,$colors),"gray-dark","gray");
+
+//  Duplicate and merge $theme-colors and $colors values with brighter and darker versions
+
+$color-tints: (1: 80,2: 60,3: 40,4: 20,5: null,6: 20,7: 40,8: 60,9: 80);
+@each $colorKey,$colorVal in $theme-colors{
+  @each $key, $val in $color-tints{
+
+    @if $key<5{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": tint-color($colorVal,$val)));
+    }
+    @if $key>5{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": shade-color($colorVal,$val)));
+    }
+    @if $val==null{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": $colorVal));
+    }
+  }
+}

@@ -1,0 +1,15 @@
+import '!style-loader!css-loader!sass-loader!@/assets/css/ui/main.sass';
+import '@/directives/UI/UIMixins.js'
+
+export const parameters = {
+  docs: {
+    inlineStories: true,
+  },
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      // color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+}

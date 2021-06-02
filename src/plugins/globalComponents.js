@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-Vue.component('KareRow', ()=> import('@/components/UI/KareRow.vue'));
-Vue.component('KareCol', ()=> import('@/components/UI/KareCol.vue'));
-Vue.component('KareText', ()=> import('@/components/UI/KareText.vue'));
-Vue.component('KareButton', ()=> import('@/components/UI/KareButton.vue'));
-Vue.component('KareContainer', ()=> import('@/components/UI/KareContainer.vue'));
+Vue.component('CreRow', ()=> import('@/components/UI/CreRow.vue'));
+Vue.component('CreCol', ()=> import('@/components/UI/CreCol.vue'));
+Vue.component('CreText', ()=> import('@/components/UI/CreText.vue'));
+Vue.component('CreButton', ()=> import('@/components/UI/CreButton.vue'));
+Vue.component('CreContainer', ()=> import('@/components/UI/CreContainer.vue'));

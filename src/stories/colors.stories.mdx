@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable, Preview } from '@storybook/addon-docs/blocks';
+import {themeColors} from './assets/variables.js';
+
+
+<Meta title="Utilities/Colors"
+  parameters={{
+    docs:{
+      description: "Use Crewotive’s button component for actions in forms, dialogs, and more with support for multiple sizes, states, and more.",
+    }
+  }} 
+/>
+
+<div className="row">
+  {
+    themeColors.filter(val=>val[0].match(/-\d$/g)==null)
+    .map(color=>{
+      return (
+        <ul className="list-group col-4" key={color}>
+          <li className="list-group-item">
+            <span className="mx-1 text-capitalize">{color[0]}</span>
+            <button className={`btn btn-sm btn-${color[0]}`}>{color[1].value.hex}</button>
+            <ul className="list-group my-1">
+            {
+              themeColors.filter(val=>val[0].startsWith(color[0]+'-'))
+              .map(subColor=>{
+                return (
+                  <li className="list-unstyled" key={subColor}>
+                    <span className="mx-1 text-capitalize">{subColor[0]}</span>
+                    <button className={`btn btn-sm btn-${subColor[0]}`}>{subColor[1].value.hex}</button>
+                  </li>
+                )
+              })
+            }
+            </ul>
+          </li>
+        </ul>
+      )
+    })
+  }
+</div>
+
+<Title />
+<Subtitle />
+<Description />
