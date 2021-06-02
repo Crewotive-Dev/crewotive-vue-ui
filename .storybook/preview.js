@@ -1,5 +1,5 @@
 import '!style-loader!css-loader!sass-loader!@/assets/css/ui/main.sass';
-import '@/directives/UI/UIMixins.js'
+import '@/directives/UI/UIDirectives.js'
 
 export const parameters = {
   docs: {

@@ -7,11 +7,17 @@ export default {
       default: false,
     },
   },
+  computed:{
+    styleClasses(){
+      const vm = this
+      return [vm.fluid ? `container-fluid`:`container`]
+    }
+  }
 };
 </script>
 
 <template>
-  <div :class="[fluid ? 'container-fluid' : 'container']">
+  <div :class="styleClasses">
     <slot />
   </div>
 </template>

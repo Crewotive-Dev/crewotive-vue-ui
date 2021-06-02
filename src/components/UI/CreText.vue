@@ -19,17 +19,23 @@ export default {
       default: "",
     },
   },
+  computed:{
+    styleClasses(){
+      const vm = this
+      return {
+      [`text-${vm.color}`] : vm.color,
+      [`fw-${vm.weight}`] : vm.weight,
+      [`fs-${vm.size}`] : vm.size
+    }
+    }
+  }
 };
 </script>
 
 <template>
   <component
     :is="el"
-    :class="{
-      [`text-${color}`] : color,
-      [`fw-${weight}`] : weight,
-      [`fs-${size}`] : size
-    }"
+    :class="styleClasses"
   >
     <slot />
   </component>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import '@/plugins/globalComponents.js'
-import '@/directives/UI/UIMixins.js'
+import '@/directives/UI/UIDirectives.js'
 Vue.config.productionTip = false
 
 // Vue.directive('bg',{
