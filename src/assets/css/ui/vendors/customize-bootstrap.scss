@@ -1,0 +1,20 @@
+@import "../../../../../node_modules/bootstrap/scss/functions";
+
+@import "../../../../../node_modules/bootstrap/scss/variables";
+
+$enable-shadows: true;
+$enable-negative-margins: true;
+
+    
+
+/*
+  Değişikliklerinizi burada tanımlayabilirsiniz
+  Örn.
+    $danger: #00ff00
+
+  */ 
+@import "./cre-variables.scss";
+@import "./cre-mixins.scss";
+@import "./cre-utilities.scss";
+@import "../../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../../node_modules/bootstrap/scss/utilities";

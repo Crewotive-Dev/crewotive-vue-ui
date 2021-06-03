@@ -1,10 +1,10 @@
-import { Title, Story, Props , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions'
-import CreButton from '../components/UI/CreButton.vue';
-import * as sassVariables from './assets/variables.js';
+import CreButton from '../../components/UI/CreButton.vue';
+import * as sassVariables from '../assets/variables.js';
 const { themeColors, colorTints } = sassVariables
 
-<Meta title="Components/Buttons" component={CreButton} 
+<Meta title="Components/Buttons" component={ CreButton } 
   parameters={{
     docs:{
       description: {
@@ -16,16 +16,17 @@ const { themeColors, colorTints } = sassVariables
     label: { control: { type: 'text'} },
     color: { control: { type : 'select', options : [...themeColors.filter(val=>val[0].match(/-\d$/g)==null).map(e=>e[0]),'link'] } },
     size: { control: { type : 'select', options : ['sm', 'md', 'lg'] } },
-    tint: { control: { type : 'number', min : colorTints.map(e=>e[0])[0], max : colorTints.map(e=>e[0]).reverse()[0]} },
+    tint: { control: { type : 'range', min : colorTints.map(e=>e[0])[0], max : colorTints.map(e=>e[0]).reverse()[0]} },
+    click: { action: 'buttonClick' }
   }}
   />
 
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CreButton },
-  template: `<cre-button v-bg.primary.7.gradient v-bind="$props" @click="clicked"/>`,
+  template: `<cre-button v-border.start.10.red v-bind="$props" @click="buttonClick"/>`,
   methods: {
-    clicked: action(`click`)
+    buttonClick: action('click')
   }
 });
 
@@ -48,6 +49,16 @@ export const Template = (args, { argTypes }) => ({
     color : "primary",
     size : "md",
     tint : "5"
+    }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story 
+    name='Link' args={{
+    label : "Button",
+    outline: true,
+    color : "link",
+    size : "md",
     }}>
     {Template.bind({})}
   </Story>
@@ -99,5 +110,5 @@ export const Template = (args, { argTypes }) => ({
 <SubTitle/>
 <Description/>
 <Primary/>
-<Props />
+<ArgsTable of={PRIMARY_STORY} />
 <Stories/>

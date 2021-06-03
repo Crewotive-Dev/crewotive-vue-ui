@@ -16,7 +16,7 @@ export default {
     <CreRow>
       <CreCol col="6" sm="6" lg="12">
         <CreText> Hello </CreText>
-        <CreButton label='myButton' v-bg.primary.10.gradient @click=sayHello() color=orange>Say Hello</CreButton>
+        <CreButton label='myButton' v-border.start.bottom.2 @click=sayHello() color=orange>Say Hello</CreButton>
       </CreCol>
       <CreCol>
         <CreText> Hello </CreText>

@@ -1,0 +1,6 @@
+// BORDER
+@each $width, $size in $border-widths{
+  @each $way, $property in $border-ways{
+    @include border-variant($way, $property, $width, $size)
+  }
+}

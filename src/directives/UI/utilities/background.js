@@ -18,7 +18,7 @@ Vue.directive('bg',{
     })
 
     if(bgColor){
-      el.classList.toggle(`bg-${ bgColor }${ tint ? ''+tint : ''}`)
+      el.classList.toggle(`bg-${ bgColor }${ tint ? '-'+tint : ''}`)
     }
   }
 })
