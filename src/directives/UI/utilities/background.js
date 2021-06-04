@@ -3,22 +3,20 @@ import * as sassVariables from '@/stories/assets/variables.js';
 
 Vue.directive('bg',{
   bind(el,binding){
+    
+    const modifiers = binding.rawName.replace(`v-${binding.name}.`,'').split('.')
+    
+    const {themeColors} = sassVariables
 
-    if(binding.modifiers['gradient'])
-      el.classList.toggle(`bg-gradient`)
-  
-    const {themeColors,colorTints} = sassVariables
-
-    const bgColor = Object.keys(binding.modifiers).find(modifier=>{
+    const bgColor = modifiers.find(modifier=>{
       return !!themeColors.map(e=>e[0]).find(color=>color==modifier)
     })
 
-    const tint = Object.keys(binding.modifiers).find(modifier=>{
-      return !!colorTints.map(e=>e[0]).find(tint=>tint==modifier)
-    })
+    if(modifiers.includes('gradient'))
+      el.classList.toggle(`bg-gradient`)
 
     if(bgColor){
-      el.classList.toggle(`bg-${ bgColor }${ tint ? '-'+tint : ''}`)
+      el.classList.toggle(`bg-${ bgColor }`)
     }
   }
 })

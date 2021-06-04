@@ -1,6 +1,42 @@
 // BORDER
-@each $width, $size in $border-widths{
-  @each $way, $property in $border-ways{
-    @include border-variant($way, $property, $width, $size)
-  }
-}
+$utilities: map-merge(
+  $utilities,
+  (
+    "border-start": map-merge(
+      map-get($utilities, "border-start"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-start"), "values"),
+          $border-widths,
+        ),
+      ),
+    ),
+    "border-end": map-merge(
+      map-get($utilities, "border-end"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-end"), "values"),
+          $border-widths,
+        ),
+      ),
+    ),
+    "border-top": map-merge(
+      map-get($utilities, "border-top"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-top"), "values"),
+          $border-widths,
+        ),
+      ),
+    ),
+    "border-bottom": map-merge(
+      map-get($utilities, "border-bottom"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-bottom"), "values"),
+          $border-widths,
+        ),
+      ),
+    ),
+  )
+);

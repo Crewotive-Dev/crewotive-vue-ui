@@ -1,5 +1,12 @@
 $spacer: 1rem;
 $spacers: ();
+$ways: ("start": "left", "end": "right", "top": "top", "bottom": "bottom");
+$clock-way: ("top", "end", "bottom", "start");
+$x-alignment: ("start","center","end");
+$y-alignment: ("top","center","bottom");
+
+$font-weights: ($font-weight-lighter,$font-weight-light,$font-weight-normal,$font-weight-bold,$font-weight-bolder,$font-weight-base);
+
 @for $s from 0 through 10{
   $spacers: map-merge($spacers, (#{$s}: #{$s*$spacer}));
 }
@@ -12,26 +19,25 @@ $spacers: ();
 //  Duplicate and merge $theme-colors and $colors values with brighter and darker versions
 $theme-colors: map-remove(map-merge($theme-colors,$colors),"gray-dark","gray");
 $color-tints: (1: 80,2: 60,3: 40,4: 20,5: null,6: 20,7: 40,8: 60,9: 80);
-// @each $colorKey,$colorVal in $theme-colors{
-//   @each $key, $val in $color-tints{
+@each $colorKey,$colorVal in $theme-colors{
+  @each $key, $val in $color-tints{
 
-//     @if $key<5{
-//       $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": tint-color($colorVal,$val)));
-//     }
-//     @if $key>5{
-//       $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": shade-color($colorVal,$val)));
-//     }
-//     @if $val==null{
-//       $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": $colorVal));
-//     }
-//   }
-// }
+    @if $key<5{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": tint-color($colorVal,$val)));
+    }
+    @if $key>5{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": shade-color($colorVal,$val)));
+    }
+    @if $val==null{
+      $theme-colors: map-merge($theme-colors,("#{$colorKey}-#{$key}": $colorVal));
+    }
+  }
+}
 
-$border-ways: ("start": "left", "end": "right", "top": "top", "bottom": "bottom");
 $border-width: 1px;
 $border-width-count: 10;
 $border-widths: () !default;
 
-@for $width from 1 through $border-width-count{
-  $border-widths: map-merge($border-widths, ($width: $width*$border-width));
+@for $width from 0 through $border-width-count{
+  $border-widths: map-merge($border-widths, ($width: $width*$border-width solid $border-color));
 };
