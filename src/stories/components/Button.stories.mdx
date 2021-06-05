@@ -1,7 +1,7 @@
 import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions'
 import CreButton from '../../components/UI/CreButton.vue';
-import * as sassVariables from '../assets/variables.js';
+import * as sassVariables from '@/assets/js/sassVariables.js';
 const { themeColors, colorTints } = sassVariables
 
 <Meta title="Components/Buttons" component={ CreButton } 
@@ -24,7 +24,7 @@ const { themeColors, colorTints } = sassVariables
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CreButton },
-  template: `<cre-button v-t.sm.lg.start.sm.end.lighter.red-1 v-border.4.0.0.6.blue-2 v-bind="$props" @click="buttonClick"/>`,
+  template: `<cre-button v-bind="$props" @click="buttonClick"/>`,
   methods: {
     buttonClick: action('click')
   }

@@ -1,7 +1,6 @@
 $spacer: 1rem;
 $spacers: ();
-$ways: ("start": "left", "end": "right", "top": "top", "bottom": "bottom");
-$clock-way: ("top", "end", "bottom", "start");
+$clock-way: ("top","tr","end","br","bottom","bl","start","tl");
 $x-alignment: ("start","center","end");
 $y-alignment: ("top","center","bottom");
 
@@ -12,10 +11,12 @@ $font-weights: ($font-weight-lighter,$font-weight-light,$font-weight-normal,$fon
 }
 
 //  Add position options 10 each 10, from 10% to 100%
-@for $s from 1 through 9{
-  $position-values: map-merge($position-values, (#{$s*10}: calc(#{$s*10}*1%)));
-}
+// @for $s from 1 through 9{
+//   $position-values: map-merge($position-values, (#{$s*10}: calc(#{$s*10}*1%)));
+// }
 
+
+// theme-colors start
 //  Duplicate and merge $theme-colors and $colors values with brighter and darker versions
 $theme-colors: map-remove(map-merge($theme-colors,$colors),"gray-dark","gray");
 $color-tints: (1: 80,2: 60,3: 40,4: 20,5: null,6: 20,7: 40,8: 60,9: 80);
@@ -33,11 +34,23 @@ $color-tints: (1: 80,2: 60,3: 40,4: 20,5: null,6: 20,7: 40,8: 60,9: 80);
     }
   }
 }
+// theme-colors end
 
-$border-width: 1px;
+// Border start
+
+$border-width: .2rem;
 $border-width-count: 10;
+$border-side-widths: () !default;
 $border-widths: () !default;
 
 @for $width from 0 through $border-width-count{
-  $border-widths: map-merge($border-widths, ($width: $width*$border-width solid $border-color));
+  $border-side-widths: map-merge($border-side-widths, ($width: $width*$border-width solid $border-color));
+  $border-widths: map-merge($border-widths, ($width: $width*$border-width));
 };
+
+// Border end
+
+// Input Button start
+
+
+// Input Button end

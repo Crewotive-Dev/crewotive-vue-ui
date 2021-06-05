@@ -1,16 +1,16 @@
 import Vue from 'vue'
-import * as sassVariables from '@/stories/assets/variables.js';
+import * as sassVariables from '@/assets/js/sassVariables.js';
 
-const { themeColors, xAlignment, breakpoints, fontSizes, fontWeightKeys, lineHeights } = sassVariables
+const { textColors, textDecorations, xAlignment, breakpoints, fontSizes, fontWeightKeys, lineHeights } = sassVariables
 
 Vue.directive('t',{
   bind(el,binding){
 
     const modifiers = binding.rawName.replace(`v-${binding.name}.`,'').split('.')
 
-    // themecolors like 'primary, red,' __String
+    // textColors like 'primary, red,' __String
     const textColor = modifiers.find(modifier=>{
-      return !!themeColors.map(e=>e[0]).find(color=>color==modifier)
+      return !!textColors.map(e=>e[0]).find(color=>color==modifier)
     })
 
     // breakpoint values like 'sm, xl __Array
@@ -43,6 +43,10 @@ Vue.directive('t',{
       return !!lineHeights.find(height=>height==modifier)
     })
 
+    const decoration = modifiers.find(modifier=>{
+      return !!textDecorations.find(deco=>deco==modifier)
+    })
+
     if(textColor)
       el.classList.toggle(`text-${textColor}`)
 
@@ -62,5 +66,9 @@ Vue.directive('t',{
 
     if(lh)
       el.classList.toggle(`lh-${lh}`)
+
+    if(decoration)
+      el.classList.toggle(`text-decoration-${decoration}`)
+
   }
 })

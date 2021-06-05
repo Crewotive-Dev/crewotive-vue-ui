@@ -1,5 +1,0 @@
-@mixin border-variant($way,$property,$width,$size){
-  .border-#{$way}-#{$width}{
-    border-#{$property}: #{$size} solid !important;
-  }
-}

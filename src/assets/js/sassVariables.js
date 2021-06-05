@@ -3,6 +3,8 @@ const variables = require('sass-extract-loader!@/assets/css/ui/main.scss');
 const vg = variables.global
 
 export const themeColors = Object.entries(vg['$theme-colors'].value)
+export const textColors = Object.keys(Object.entries(vg['$utilities'].value).find(u=>u[0]=='color')[1].value.values.value)
+export const textDecorations = Object.entries(vg['$utilities'].value).find(u=>u[0]=='text-decoration')[1].value.values.value.map(e=>e.value)
 export const breakpoints = Object.entries(vg['$grid-breakpoints'].value)
 export const colorTints = Object.entries(vg['$color-tints'].value)
 export const borderWidths = Object.entries(vg['$border-widths'].value)
@@ -13,6 +15,6 @@ export const fontSizes = Object.entries(vg['$font-sizes'].value)
 export const fontWeightKeys = vg['$font-weights'].declarations[0]
 .expression.replace(/\$font-weight-|\(|\)/g,'').split(',')
 export const lineHeights = Object.keys(Object.entries(vg['$utilities'].value).find(u=>u[0]=='line-height')[1].value.values.value)
-
+export const display = Object.entries(vg['$utilities'].value).find(u=>u[0]=='display')[1].value.values.value.map(e=>e.value)
 
 export default vg

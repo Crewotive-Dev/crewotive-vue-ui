@@ -1,13 +1,13 @@
-// BORDER
 $utilities: map-merge(
   $utilities,
   (
+    // border start
     "border-start": map-merge(
       map-get($utilities, "border-start"),
       (
         values: map-merge(
           map-get(map-get($utilities, "border-start"), "values"),
-          $border-widths,
+          $border-side-widths,
         ),
       ),
     ),
@@ -16,7 +16,7 @@ $utilities: map-merge(
       (
         values: map-merge(
           map-get(map-get($utilities, "border-end"), "values"),
-          $border-widths,
+          $border-side-widths,
         ),
       ),
     ),
@@ -25,7 +25,7 @@ $utilities: map-merge(
       (
         values: map-merge(
           map-get(map-get($utilities, "border-top"), "values"),
-          $border-widths,
+          $border-side-widths,
         ),
       ),
     ),
@@ -34,9 +34,72 @@ $utilities: map-merge(
       (
         values: map-merge(
           map-get(map-get($utilities, "border-bottom"), "values"),
-          $border-widths,
+          $border-side-widths,
         ),
       ),
     ),
+    // border end
+
+    // border-radius start
+    "border-radius": (
+      property: border-radius,
+      class: radius,
+      values: $border-widths
+    ),
+    "border-radius-top": (
+      property: border-top-left-radius border-top-right-radius,
+      class: radius-top,
+      values: $border-widths
+    ),
+    "border-radius-end": (
+      property: border-top-right-radius border-bottom-right-radius,
+      class: radius-end,
+      values: $border-widths
+    ),
+    "border-radius-bottom": (
+      property: border-bottom-left-radius border-bottom-right-radius,
+      class: radius-bottom,
+      values: $border-widths
+    ),
+    "border-radius-start": (
+      property: border-bottom-left-radius border-top-left-radius,
+      class: radius-start,
+      values: $border-widths
+    ),
+    "border-radius-top-left": (
+      property: border-top-left-radius,
+      class: radius-tl,
+      values: $border-widths
+    ),
+    "border-radius-top-right": (
+      property: border-top-right-radius,
+      class: radius-tr,
+      values: $border-widths
+    ),
+    "border-radius-bottom-left": (
+      property: border-bottom-left-radius,
+      class: radius-bl,
+      values: $border-widths
+    ),
+    "border-radius-bottom-right": (
+      property: border-bottom-right-radius,
+      class: radius-br,
+      values: $border-widths
+    ),
+    // border-radius end
+
+    // line-height start
+    "line-height": map-merge(
+      map-get($utilities, "line-height"),
+      (
+        values: (
+          1: 1,
+          small: $line-height-sm,
+          base: $line-height-base,
+          large: $line-height-lg,
+        )
+      ),
+    ),
+    // line-height end
   )
 );

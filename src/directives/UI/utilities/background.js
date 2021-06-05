@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import * as sassVariables from '@/stories/assets/variables.js';
+import * as sassVariables from '@/assets/js/sassVariables.js';
 
 Vue.directive('bg',{
   bind(el,binding){
