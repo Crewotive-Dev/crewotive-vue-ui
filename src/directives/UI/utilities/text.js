@@ -40,7 +40,7 @@ Vue.directive('t',{
 
     // line height __String
     const lh = modifiers.find(modifier=>{
-      return !!lineHeights.find(height=>height==modifier)
+      return !!lineHeights.find(height=>'lh-'+height==modifier)
     })
 
     const decoration = modifiers.find(modifier=>{
@@ -48,27 +48,27 @@ Vue.directive('t',{
     })
 
     if(textColor)
-      el.classList.toggle(`text-${textColor}`)
+      el.classList.add(`text-${textColor}`)
 
     if(textAlignments.length>0)
       if(textBreakpoints.length>0)
         textBreakpoints.forEach((breakpoint,i)=>{
-          el.classList.toggle(`text-${breakpoint}-${textAlignments[i] || textAlignments[0]}`)
+          el.classList.add(`text-${breakpoint}-${textAlignments[i] || textAlignments[0]}`)
         })
       else
-        el.classList.toggle(`text-${textAlignments[0]}`)
+        el.classList.add(`text-${textAlignments[0]}`)
     
     if(fs)
-      el.classList.toggle(`fs-${fs}`)
+      el.classList.add(`fs-${fs}`)
     
     if(fw)
-      el.classList.toggle(`fw-${fw}`)
+      el.classList.add(`fw-${fw}`)
 
     if(lh)
-      el.classList.toggle(`lh-${lh}`)
+      el.classList.add(`${lh}`)
 
     if(decoration)
-      el.classList.toggle(`text-decoration-${decoration}`)
+      el.classList.add(`text-decoration-${decoration}`)
 
   }
 })

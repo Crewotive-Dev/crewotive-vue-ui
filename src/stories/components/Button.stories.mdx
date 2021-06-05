@@ -24,7 +24,7 @@ const { themeColors, colorTints } = sassVariables
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CreButton },
-  template: `<cre-button v-bind="$props" @click="buttonClick"/>`,
+  template: `<cre-button v-bind="$props" v-d.print.block.none @click="buttonClick"/>`,
   methods: {
     buttonClick: action('click')
   }

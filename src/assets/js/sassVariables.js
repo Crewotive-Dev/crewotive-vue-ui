@@ -15,6 +15,6 @@ export const fontSizes = Object.entries(vg['$font-sizes'].value)
 export const fontWeightKeys = vg['$font-weights'].declarations[0]
 .expression.replace(/\$font-weight-|\(|\)/g,'').split(',')
 export const lineHeights = Object.keys(Object.entries(vg['$utilities'].value).find(u=>u[0]=='line-height')[1].value.values.value)
-export const display = Object.entries(vg['$utilities'].value).find(u=>u[0]=='display')[1].value.values.value.map(e=>e.value)
+export const displays = Object.entries(vg['$utilities'].value).find(u=>u[0]=='display')[1].value.values.value.map(e=>e.value)
 
 export default vg

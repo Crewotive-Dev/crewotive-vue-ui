@@ -87,19 +87,5 @@ $utilities: map-merge(
       values: $border-widths
     ),
     // border-radius end
-
-    // line-height start
-    "line-height": map-merge(
-      map-get($utilities, "line-height"),
-      (
-        values: (
-          1: 1,
-          small: $line-height-sm,
-          base: $line-height-base,
-          large: $line-height-lg,
-        )
-      ),
-    ),
-    // line-height end
   )
 );
