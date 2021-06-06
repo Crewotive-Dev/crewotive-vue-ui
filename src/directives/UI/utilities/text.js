@@ -1,74 +1,83 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import * as sassVariables from '@/assets/js/sassVariables.js';
 
-const { textColors, textDecorations, xAlignment, breakpoints, fontSizes, fontWeightKeys, lineHeights } = sassVariables
+const { textColors,
+  textTransforms,
+  textDecorations,
+  xAlignments,
+  breakPoints,
+  fontSizes,
+  fontStyles,
+  fontWeights,
+  lineHeights,
+  whiteSpaces
+ } = sassVariables
 
 Vue.directive('t',{
   bind(el,binding){
 
     const modifiers = binding.rawName.replace(`v-${binding.name}.`,'').split('.')
 
-    // textColors like 'primary, red,' __String
-    const textColor = modifiers.find(modifier=>{
-      return !!textColors.map(e=>e[0]).find(color=>color==modifier)
-    })
+    // textColors like 'primary,red,' __String
+    const textColor = modifiers.find(modifier=>!!textColors.find(color=>color==modifier))
 
     // breakpoint values like 'sm, xl __Array
-    const textBreakpoints = modifiers.filter(modifier=>{
-      return !!breakpoints.map(breakpoint=>breakpoint[0]).includes(modifier)
-    })
+    const breakpoint = modifiers.filter(modifier=>!!breakPoints.includes(modifier))
 
     // text alingments of  x axis like 'start, center, end' __Array
-    const textAlignments = modifiers.filter(modifier=>{
-      return !!xAlignment.map(e=>e[1].value).includes(modifier)
-    })
+    const textAlignments = modifiers.filter(modifier=>!!xAlignments.includes(modifier))
 
     // font size __String
-    const fs = modifiers.find(modifier=>{
-      return !!fontSizes.map(e=>e[0]).find(size=>size==modifier)
-    })
+    const fs = modifiers.find(modifier=>!!fontSizes.find(size=>size==modifier))
     
     // font weight __String
-    const fw = modifiers.find(modifier=>{
-      return !!fontWeightKeys.find(weight=>weight==modifier)
-    })
+    const fw = modifiers.find(modifier=>!!fontWeights.find(weight=>weight==modifier))
 
     // font style __String
-    const fst = modifiers.find(modifier=>{
-      return !!['italic','normal'].find(style=>style==modifier)
-    })
+    const fst = modifiers.find(modifier=>!!fontStyles.find(style=>style==modifier))
 
     // line height __String
-    const lh = modifiers.find(modifier=>{
-      return !!lineHeights.find(height=>'lh-'+height==modifier)
-    })
+    const lh = modifiers.find(modifier=>!!lineHeights.find(height=>'lh-'+height==modifier))
 
-    const decoration = modifiers.find(modifier=>{
-      return !!textDecorations.find(deco=>deco==modifier)
-    })
+    const decoration = modifiers.find(modifier=>!!textDecorations.find(deco=>deco==modifier))
+
+    const transform = modifiers.find(modifier=>!!textTransforms.find(tt=>tt==modifier))
+
+    const whiteSpace = modifiers.find(modifier=>!!whiteSpaces.find(ws=>ws==modifier))
+
+    const monospace = modifiers.includes('monospace')
 
     if(textColor)
       el.classList.add(`text-${textColor}`)
 
     if(textAlignments.length>0)
-      if(textBreakpoints.length>0)
-        textBreakpoints.forEach((breakpoint,i)=>{
-          el.classList.add(`text-${breakpoint}-${textAlignments[i] || textAlignments[0]}`)
-        })
-      else
-        el.classList.add(`text-${textAlignments[0]}`)
-    
+      textAlignments.forEach((alignment,i)=>{
+        el.classList.add(`text${ !!breakpoint[i] && `-${breakpoint[i]}` || ''}-${alignment}`)
+      })
+
     if(fs)
       el.classList.add(`fs-${fs}`)
     
     if(fw)
       el.classList.add(`fw-${fw}`)
 
+    if(fst)
+      el.classList.add(`fst-${fw}`)
+
     if(lh)
       el.classList.add(`${lh}`)
 
     if(decoration)
       el.classList.add(`text-decoration-${decoration}`)
+
+    if(transform)
+      el.classList.add(`text-${transform}`)
+
+    if(monospace)
+      el.classList.add(`font-monospace`)
+
+    if(whiteSpace)
+      el.classList.add(`text-${whiteSpace}`)
 
   }
 })

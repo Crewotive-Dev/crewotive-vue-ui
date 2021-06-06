@@ -1,20 +1,56 @@
 const variables = require('sass-extract-loader!@/assets/css/ui/main.scss');
 
-const vg = variables.global
+export const vg = variables.global
 
-export const themeColors = Object.entries(vg['$theme-colors'].value)
-export const textColors = Object.keys(Object.entries(vg['$utilities'].value).find(u=>u[0]=='color')[1].value.values.value)
-export const textDecorations = Object.entries(vg['$utilities'].value).find(u=>u[0]=='text-decoration')[1].value.values.value.map(e=>e.value)
-export const breakpoints = Object.entries(vg['$grid-breakpoints'].value)
-export const colorTints = Object.entries(vg['$color-tints'].value)
-export const borderWidths = Object.entries(vg['$border-widths'].value)
-export const clockWay = Object.entries(vg['$clock-way'].value).map(e=>e[1].value)
-export const xAlignment = Object.entries(vg['$x-alignment'].value)
-export const yAlignment = Object.entries(vg['$y-alignment'].value)
-export const fontSizes = Object.entries(vg['$font-sizes'].value)
-export const fontWeightKeys = vg['$font-weights'].declarations[0]
-.expression.replace(/\$font-weight-|\(|\)/g,'').split(',')
-export const lineHeights = Object.keys(Object.entries(vg['$utilities'].value).find(u=>u[0]=='line-height')[1].value.values.value)
-export const displays = Object.entries(vg['$utilities'].value).find(u=>u[0]=='display')[1].value.values.value.map(e=>e.value)
+export function getUtilityVariable(utilityName){
+  const variables = Object.entries(vg['$utilities'].value).find(u=>u[0]==utilityName)[1].value.values
+  const value = variables.value
+  const type = variables.type
+  if(type == 'SassMap')
+    return Object.keys(value)
+  if(type == 'SassList'){
+    return value.map(e=>e.value)
+  }
+  return value
+}
 
-export default vg
+export function getVariable(variableName){
+  const value = vg[`$${variableName}`].value
+  const type = vg[`$${variableName}`].type
+  if(type == 'SassList')
+    return value.map(e=>e.value)
+  if(type == 'SassMap')
+    return Object.keys(value)
+  return value
+}
+
+
+// variables
+export const themeColors = getVariable('theme-colors')
+export const breakPoints = getVariable('grid-breakpoints')
+export const colorTints = getVariable('color-tints')
+export const borderWidths = getVariable('border-widths')
+export const clockWays = getVariable('clock-way')
+export const xAlignments = getVariable('x-alignments')
+export const yAlignments = getVariable('y-alignments')
+export const fontSizes = getVariable('font-sizes')
+
+// utility variables
+export const textColors = getUtilityVariable('color')
+export const textDecorations = getUtilityVariable('text-decoration')
+export const textTransforms = getUtilityVariable('text-transform')
+export const fontWeights = getUtilityVariable('font-weight')
+export const fontStyles = getUtilityVariable('font-style')
+export const lineHeights = getUtilityVariable('line-height')
+export const displays = [...getUtilityVariable('display'),'print']
+export const flexibles = [
+  ...getUtilityVariable('flex'),
+  ...getUtilityVariable('flex-wrap'),
+  ...getUtilityVariable('flex-grow'),
+  ...getUtilityVariable('flex-shrink'),
+  ...getUtilityVariable('flex-direction')
+]
+
+export const whiteSpaces = [...getUtilityVariable('white-space'),...getUtilityVariable('word-wrap')]
+
+export const utilitiesVariables = Object.entries(vg['$utilities'].value)

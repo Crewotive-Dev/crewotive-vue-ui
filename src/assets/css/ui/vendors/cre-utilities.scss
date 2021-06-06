@@ -87,5 +87,13 @@ $utilities: map-merge(
       values: $border-widths
     ),
     // border-radius end
+
+    // Rounded start
+    "rounded": null,
+    "rounded-top": null,
+    "rounded-bottom": null,
+    "rounded-start": null,
+    "rounded-end": null,
+    // Rounded end
   )
 );

@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable, Preview } from '@storybook/addon-docs/blocks';
-import {themeColors} from '@/assets/js/sassVariables.js';
+import {themeColors, vg} from '@/assets/js/sassVariables.js';
 
 
 <Meta title="Utilities/Colors"
@@ -12,7 +12,7 @@ import {themeColors} from '@/assets/js/sassVariables.js';
 
 <div className="row">
   {
-    themeColors.filter(val=>val[0].match(/-\d$/g)==null)
+    Object.entries(vg[`$theme-colors`].value).filter(val=>val[0].match(/-\d$/g)==null)
     .map(color=>{
       return (
         <ul className="list-group col-4" key={color}>
@@ -21,7 +21,7 @@ import {themeColors} from '@/assets/js/sassVariables.js';
             <button className={`btn btn-sm btn-${color[0]}`}>{color[1].value.hex}</button>
             <ul className="list-group my-1">
             {
-              themeColors.filter(val=>val[0].startsWith(color[0]+'-'))
+              Object.entries(vg[`$theme-colors`].value).filter(val=>val[0].startsWith(color[0]+'-'))
               .map(subColor=>{
                 return (
                   <li className="list-unstyled" key={subColor}>

@@ -1,9 +1,9 @@
 @import "../../../../../node_modules/bootstrap/scss/functions";
 
-@import "../../../../../node_modules/bootstrap/scss/variables";
-
-$enable-shadows: false;
+$enable-shadows: true;
 $enable-negative-margins: true;
+
+@import "../../../../../node_modules/bootstrap/scss/variables";
 
 @import "./cre-variables.scss";
 
@@ -12,5 +12,3 @@ $enable-negative-margins: true;
 @import "./cre-utilities.scss";
 
 @import "../../../../../node_modules/bootstrap/scss/mixins";
-
-@import "./cre-mixins.scss";

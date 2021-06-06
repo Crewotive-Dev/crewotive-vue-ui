@@ -3,24 +3,22 @@ import * as sassVariables from '@/assets/js/sassVariables.js';
 
 Vue.directive('border',{
   bind(el,binding){
-    const { borderWidths,themeColors, clockWay } = sassVariables
+    const { borderWidths,themeColors, clockWays } = sassVariables
 
     const modifiers = binding.rawName.replace(`v-${binding.name}.`,'').split('.')
 
-    const borderSizes = modifiers.filter(modifier=>{
-      return !!borderWidths.map(e=>e[0]).includes(modifier)
-    })
+    const borderSizes = modifiers.filter(modifier=>!!borderWidths.includes(modifier))
     
-    const borderColor = modifiers.find(modifier=>{
-      return !!themeColors.map(e=>e[0]).find(color=>color==modifier)
-    })
+    const borderColor = modifiers.find(modifier=>!!themeColors.find(color=>color==modifier))
+
+    const borderWays = modifiers.filter(modifier=>!!clockWays.includes(modifier))
 
     if(borderColor)
       el.classList.add(`border-${borderColor}`)
 
-    if(borderSizes.length>1){
-      borderSizes.forEach((size,i)=>{
-        el.classList.add(`border-${clockWay[i*2]}-${size}`)
+    if(borderWays.length>0){
+      borderWays.forEach((way,i)=>{
+        el.classList.add(`border-${way}-${borderSizes[i] || borderSizes[borderSizes.length-1]}`)
       })      
     }
     else
@@ -32,15 +30,11 @@ Vue.directive("radius",{
   bind(el,binding){
     const modifiers = binding.rawName.replace(`v-${binding.name}.`,'').split('.') 
     
-    const {borderWidths, clockWay} = sassVariables
+    const {borderWidths, clockWays} = sassVariables
 
-    const borderRadius = modifiers.filter(modifier=>{
-      return !!borderWidths.map(e=>e[0]).includes(modifier)
-    })
+    const borderRadius = modifiers.filter(modifier=>!!borderWidths.includes(modifier))
 
-    const borderWays = modifiers.filter(modifier=>{
-      return !!clockWay.includes(modifier)
-    })
+    const borderWays = modifiers.filter(modifier=>!!clockWays.includes(modifier))
 
     if(borderWays.length>0){
       borderWays.forEach((way,i)=>{
