@@ -50,7 +50,14 @@ export const flexibles = [
   ...getUtilityVariable('flex-shrink'),
   ...getUtilityVariable('flex-direction')
 ]
+export const justifies = getUtilityVariable('justify-content')
+export const aligns = {
+  'items': [...getUtilityVariable('align-items')],
+  'content': [...getUtilityVariable('align-content')],
+  'self': [...getUtilityVariable('align-self')],
+}
+export const orders = getUtilityVariable('order')
+
 
 export const whiteSpaces = [...getUtilityVariable('white-space'),...getUtilityVariable('word-wrap')]
-
 export const utilitiesVariables = Object.entries(vg['$utilities'].value)

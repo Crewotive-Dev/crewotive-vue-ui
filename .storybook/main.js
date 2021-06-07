@@ -14,7 +14,6 @@ module.exports = {
     config.resolve = {
       alias: {
           "@": path.resolve(__dirname, "../src/"),
-          "~": path.resolve(__dirname, "../node_modules/"),
           "vue": path.resolve(__dirname, "../node_modules/vue/dist/vue.js")
       }
     };

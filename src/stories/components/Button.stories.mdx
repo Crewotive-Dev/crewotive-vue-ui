@@ -16,7 +16,7 @@ const { themeColors, colorTints } = sassVariables
     label: { control: { type: 'text'} },
     color: { control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
     size: { control: { type : 'select', options : ['sm', 'md', 'lg'] } },
-    tint: { control: { type : 'range', min : parseInt(colorTints[0])+1, max : parseInt(colorTints[colorTints.length-1])+1} },
+    tint: { control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
     click: { action: 'buttonClick' }
   }}
   />
@@ -24,7 +24,7 @@ const { themeColors, colorTints } = sassVariables
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { CreButton },
-  template: `<cre-button v-border.10.bottom.top.5.pink v-bind="$props" @click="buttonClick"/>`,
+  template: `<cre-button v-bind="$props" @click="buttonClick"/>`,
   methods: {
     buttonClick: action('click')
   }

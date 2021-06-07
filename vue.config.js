@@ -2,7 +2,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `@import "@/assets/css/ui/vendors/customize-bootstrap.scss";`
+        prependData: `@import "@/assets/css/ui/vendors/cre-bootstrap.scss";`
       }
     }
   }
