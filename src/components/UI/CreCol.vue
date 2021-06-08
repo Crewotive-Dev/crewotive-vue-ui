@@ -1,4 +1,12 @@
 <script>
+import {breakPoints} from '../../assets/js/sassVariables'
+
+const gridBreakpoints = 
+    breakPoints.reduce((acc,val)=>{
+      acc[val]={ type: [String, Number], default: ""}
+      return acc
+    },{})
+
 export default {
   name: "KareCol",
   props: {
@@ -6,29 +14,17 @@ export default {
       type: [String, Number],
       default: "",
     },
-    sm: {
-      type: [String, Number],
-      default: "",
-    },
-    md: {
-      type: [String, Number],
-      default: "",
-    },
-    lg: {
-      type: [String, Number],
-      default: "",
-    },
+    ...gridBreakpoints
   },
   computed:{
     styleClasses(){
       const vm = this
       return [
         `col${vm.col ? '-'+ vm.col:''}`,
-        {
-          [`col-sm-${vm.sm}`] : vm.sm,
-          [`col-md-${vm.md}`] : vm.md,
-          [`col-lg-${vm.lg}`] : vm.lg,
-        }
+        Object.keys(gridBreakpoints).reduce((acc,val)=>{
+          acc[`col-${val}-${vm[val]}`] = vm[val]
+          return acc
+        },{})
       ]
     }
   }

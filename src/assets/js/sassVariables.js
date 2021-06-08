@@ -1,4 +1,4 @@
-const variables = require('sass-extract-loader!@/assets/css/ui/main.scss');
+const variables = require('sass-extract-loader!@/assets/css/ui/vendors/cre-bootstrap.scss');
 
 export const vg = variables.global
 
@@ -27,7 +27,8 @@ export function getVariable(variableName){
 
 // variables
 export const themeColors = getVariable('theme-colors')
-export const breakPoints = getVariable('grid-breakpoints')
+export let breakPoints = getVariable('grid-breakpoints')
+breakPoints.splice(breakPoints.indexOf('xs'),1)
 export const colorTints = getVariable('color-tints')
 export const borderWidths = getVariable('border-widths')
 export const clockWays = getVariable('clock-way')

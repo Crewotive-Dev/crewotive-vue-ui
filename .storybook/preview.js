@@ -1,4 +1,5 @@
-import '!style-loader!css-loader!sass-loader!@/assets/css/ui/main.scss';
+// import '!style-loader!css-loader!sass-loader!@/assets/css/ui/main.scss';
+require('./main.scss')
 import '@/directives/UI/UIDirectives.js'
 
 export const parameters = {
