@@ -2,6 +2,15 @@ $utilities: map-merge(
   $utilities,
   (
     // border start
+    "border": map-merge(
+      map-get($utilities, "border"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border"), "values"),
+          $border-side-widths,
+        ),
+      ),
+    ),
     "border-start": map-merge(
       map-get($utilities, "border-start"),
       (

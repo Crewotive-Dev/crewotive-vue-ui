@@ -13,15 +13,21 @@ export default {
 </script>
 <template>
   <CreContainer>
-    <CreRow>
+    <CreAccordion>
+      <CreAccordionItem>
+        <div slot="accordion-header">header</div>
+        <div slot="accordion-body">body</div>
+      </CreAccordionItem>
+    </CreAccordion>
+    <CreRow cols=3>
       <CreCol col="6" sm="6" lg="12">
         <CreText> Hello </CreText>
-        <CreButton label='myButton' v-border.start.bottom.2 @click=sayHello() color=orange>Say Hello</CreButton>
+        <CreButton label='myButton' @click=sayHello() variant=orange>Say Hello</CreButton>
       </CreCol>
       <CreCol>
         <CreText> Hello </CreText>
-        <CreButton label='myButton' @click="sayHello()" color="primary" outline>Say Hello</CreButton>
-        <CreButton label='myButton' @click="sayHello()" color="primary" outline>Say Hello</CreButton>
+        <CreButton label='myButton' @click="sayHello()" variant="primary" outline>Say Hello</CreButton>
+        <CreButton label='myButton' @click="sayHello()" variant="primary" outline>Say Hello</CreButton>
       </CreCol>
     </CreRow>
   </CreContainer>

@@ -14,7 +14,7 @@ const { themeColors, colorTints } = sassVariables
   }}
   argTypes={{
     label: { control: { type: 'text'} },
-    color: { control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
+    variant: { control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
     size: { control: { type : 'select', options : ['sm', 'md', 'lg'] } },
     tint: { control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
     click: { action: 'buttonClick' }
@@ -35,7 +35,7 @@ export const Template = (args, { argTypes }) => ({
   <Story 
     name='Button' args={{
     label : "Button",
-    color : "primary",
+    variant : "primary",
     size : "md",
     tint : "5"
     }}>
@@ -46,7 +46,7 @@ export const Template = (args, { argTypes }) => ({
     name='Outline' args={{
     label : "Button",
     outline: true,
-    color : "primary",
+    variant : "primary",
     size : "md",
     tint : "5"
     }}>
@@ -57,7 +57,7 @@ export const Template = (args, { argTypes }) => ({
     name='Link' args={{
     label : "Button",
     outline: true,
-    color : "link",
+    variant : "link",
     size : "md",
     }}>
     {Template.bind({})}
@@ -67,7 +67,7 @@ export const Template = (args, { argTypes }) => ({
     name='Disabled' args={{
     label : "Button",
     disabled: true,
-    color : "primary",
+    variant : "primary",
     size : "md",
     tint : "5"
     }}>
@@ -77,7 +77,7 @@ export const Template = (args, { argTypes }) => ({
   <Story 
     name='Small' args={{
     label : "Button",
-    color : "primary",
+    variant : "primary",
     size : "sm",
     tint : "5"
     }}>
@@ -87,7 +87,7 @@ export const Template = (args, { argTypes }) => ({
   <Story 
     name='Medium' args={{
     label : "Button",
-    color : "primary",
+    variant : "primary",
     size : "md",
     tint : "5"
     }}>
@@ -97,7 +97,7 @@ export const Template = (args, { argTypes }) => ({
   <Story 
     name='Large' args={{
     label : "Button",
-    color : "primary",
+    variant : "primary",
     size : "lg",
     tint : "5"
     }}>

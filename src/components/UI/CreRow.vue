@@ -1,9 +1,20 @@
 <script>
 export default {
   name: "KareRow",
+  props:{
+    cols:{
+      required: false,
+      type: String || Number
+    }
+  },
   computed:{
     styleClasses(){
-      return []
+      const vm=this
+      return [
+        {
+          [`row-cols-${vm.cols}`]: vm.cols
+        }
+      ]
     }
   }
 };

@@ -11,7 +11,7 @@ export default {
       type: String,
       default: "",
     },
-    color: {
+    variant: {
       type: String,
       default: "",
     },
@@ -32,8 +32,8 @@ export default {
     styleClasses(){
       const vm = this
       return{
-        [`btn-link`]: vm.color=="link",
-        [`btn${vm.outline ? '-outline':''}-${vm.color}${vm.tint ? `-${vm.tint}`:''}`]: vm.color && vm.color!='link',
+        [`btn-link`]: vm.variant=="link",
+        [`btn${vm.outline ? '-outline':''}-${vm.variant}${vm.tint ? `-${vm.tint}`:''}`]: vm.variant && vm.variant!='link',
         [`btn-${vm.size}`] : vm.size,
       }
     }
