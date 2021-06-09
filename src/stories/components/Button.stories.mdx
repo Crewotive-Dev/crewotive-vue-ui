@@ -4,7 +4,7 @@ import CreButton from '../../components/UI/CreButton.vue';
 import * as sassVariables from '@/assets/js/sassVariables.js';
 const { themeColors, colorTints } = sassVariables
 
-<Meta title="Components/Buttons" component={ CreButton } 
+<Meta title="Components/Buttons" component={ CreButton }
   parameters={{
     docs:{
       description: {
@@ -12,6 +12,7 @@ const { themeColors, colorTints } = sassVariables
       },
     }
   }}
+  decorators={[() => ({ template: '<div class="d-flex justify-content-center"><story/></div>' })]}
   argTypes={{
     label: { control: { type: 'text'} },
     variant: { control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
@@ -32,7 +33,7 @@ export const Template = (args, { argTypes }) => ({
 
 <div className="d-none">
 
-  <Story 
+  <Story
     name='Button' args={{
     label : "Button",
     variant : "primary",
@@ -42,7 +43,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Outline' args={{
     label : "Button",
     outline: true,
@@ -53,7 +54,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Link' args={{
     label : "Button",
     outline: true,
@@ -63,7 +64,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Disabled' args={{
     label : "Button",
     disabled: true,
@@ -74,7 +75,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Small' args={{
     label : "Button",
     variant : "primary",
@@ -84,7 +85,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Medium' args={{
     label : "Button",
     variant : "primary",
@@ -94,7 +95,7 @@ export const Template = (args, { argTypes }) => ({
     {Template.bind({})}
   </Story>
 
-  <Story 
+  <Story
     name='Large' args={{
     label : "Button",
     variant : "primary",
