@@ -6,31 +6,63 @@ export default {
       required: false,
       type: String,
       default: ""
+    },
+    stayOpen: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted () {
+    // console.log(this.stayOpen)
+  },
+  data() {
+    return {
+      id: "accordion_"+Math.random().toString(16).substring(2,10),
+    };
+  },
+  watch: {
+    stayOpen(val){
+      console.log(val)
+      if(val){
+        return this.$el.setAttribute("data-bs-parent",`#${this.parentID}`)
+      }
+      return this.$el.removeAttribute("data-bs-parent")
     }
   },
   computed:{
-    headerStyleClasses(){
-      const vm = this
-      return [
-        {
+    parentID(){
+      const parent = this.$parent
+      if(parent) {
+        if(["CreAccordion","cre-accordion"].includes(parent.$options._componentTag)){
+          console.log(parent.id)
+          return parent.id
         }
-      ]
+      }
+      return false
     },
-    bodyStyleClasses(){
-      const vm = this
-      return [
-        {
-        }
-      ]
-    }
+    // headerStyleClasses(){
+    //   const vm = this
+    //   return [
+    //     {
+    //     }
+    //   ]
+    // },
+    // bodyStyleClasses(){
+    //   const vm = this
+    //   return [
+    //     {
+    //     }
+    //   ]
+    // }
   }
 };
 </script>
 
 <template>
   <div class="accordion-item">
-    <h2
-      id="headingTwo"
+    <span
+      :id="`heading-${id}`"
       class="accordion-header"
       :class="headerStyleClasses"
     >
@@ -38,18 +70,18 @@ export default {
         class="accordion-button"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseTwo"
+        :data-bs-target="`#${id}`"
         aria-expanded="false"
-        aria-controls="collapseTwo"
+        :aria-controls="id"
       >
         <slot name="accordion-header" />
       </button>
-    </h2>
+    </span>
     <div
-      id="collapseTwo"
+      :id="id"
       class="accordion-collapse show"
-      aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample"
+      :data-bs-parent="stayOpen ? false : `#${parentID}` "
+      :aria-labelledby="`heading-${id}`"
     >
       <div
         class="accordion-body"

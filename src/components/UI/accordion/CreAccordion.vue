@@ -1,18 +1,17 @@
 <script>
 export default {
   name: "CreAccordion",
+  data() {
+    return {
+      id: "accordion__"+Math.random().toString(16).substring(2,10)
+    };
+  },
   props: {
-    accordionCount:{
-      required: false,
-      type: String,
-      default: ""
-    },
     flush:{
       required: false,
       type: Boolean,
       default: false
-    },
-
+    }
   },
   computed:{
     styleClasses(){
@@ -29,8 +28,8 @@ export default {
 
 <template>
   <div
-    id="accordionExample"
-    class="accordion m-5"
+    :id="id"
+    class="accordion"
     :class="styleClasses"
   >
     <slot />
