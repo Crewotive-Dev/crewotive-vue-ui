@@ -13,9 +13,6 @@ export default {
       default: false
     }
   },
-  mounted () {
-    // console.log(this.stayOpen)
-  },
   data() {
     return {
       id: "accordion_"+Math.random().toString(16).substring(2,10),
@@ -23,7 +20,6 @@ export default {
   },
   watch: {
     stayOpen(val){
-      console.log(val)
       if(val){
         return this.$el.setAttribute("data-bs-parent",`#${this.parentID}`)
       }
@@ -35,7 +31,6 @@ export default {
       const parent = this.$parent
       if(parent) {
         if(["CreAccordion","cre-accordion"].includes(parent.$options._componentTag)){
-          console.log(parent.id)
           return parent.id
         }
       }
@@ -64,7 +59,6 @@ export default {
     <span
       :id="`heading-${id}`"
       class="accordion-header"
-      :class="headerStyleClasses"
     >
       <button
         class="accordion-button"
@@ -85,7 +79,6 @@ export default {
     >
       <div
         class="accordion-body"
-        :class="bodyStyleClasses"
       >
         <slot name="accordion-body" />
       </div>
