@@ -19,9 +19,9 @@ export default {
 
 <template>
   <span
-  type="button"
-  class="badge"
-  :class="styleClasses"
-  > {{label}}
+    type="button"
+    class="badge"
+    :class="styleClasses"
+  > {{ label }}
   </span>
 </template>

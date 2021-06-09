@@ -21,7 +21,10 @@ export default {
 </script>
 
 <template>
-  <div :class="styleClasses" class="row" >
+  <div
+    :class="styleClasses"
+    class="row"
+  >
     <slot />
   </div>
 </template>

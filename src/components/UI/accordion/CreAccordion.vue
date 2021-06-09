@@ -12,7 +12,7 @@ export default {
       type: Boolean,
       default: false
     },
-    
+
   },
   computed:{
     styleClasses(){
@@ -28,7 +28,11 @@ export default {
 </script>
 
 <template>
-  <div class="accordion m-5" :class="styleClasses" id="accordionExample">
-      <slot />
+  <div
+    id="accordionExample"
+    class="accordion m-5"
+    :class="styleClasses"
+  >
+    <slot />
   </div>
 </template>

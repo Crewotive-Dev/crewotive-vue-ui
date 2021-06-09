@@ -43,11 +43,12 @@ export default {
 
 <template>
   <button
-  type="button"
-  class="btn"
-  :disabled="disabled"
-  @click="$emit('click')"
-  :class="styleClasses"
-  > {{label}}
+    type="button"
+    class="btn"
+    :disabled="disabled"
+    :class="styleClasses"
+    @click="$emit('click')"
+  >
+    {{ label }}
   </button>
 </template>
