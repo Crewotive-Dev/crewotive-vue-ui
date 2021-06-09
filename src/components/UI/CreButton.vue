@@ -3,9 +3,9 @@ export default {
   name: "CreButton",
   props: {
     label: {
-      required: true,
+      required: false,
       type: String,
-      default: "Button",
+      default: "",
     },
     size: {
       type: String,
