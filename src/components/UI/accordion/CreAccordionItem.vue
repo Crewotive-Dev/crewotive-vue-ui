@@ -61,7 +61,7 @@ export default {
       class="accordion-header"
     >
       <button
-        class="accordion-button"
+        class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
         :data-bs-target="`#${id}`"
@@ -73,7 +73,7 @@ export default {
     </span>
     <div
       :id="id"
-      class="accordion-collapse show"
+      class="accordion-collapse collapse"
       :data-bs-parent="stayOpen ? false : `#${parentID}` "
       :aria-labelledby="`heading-${id}`"
     >
