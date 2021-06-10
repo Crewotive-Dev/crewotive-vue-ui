@@ -1,7 +1,7 @@
 <script>
 import {breakPoints} from '../../assets/js/sassVariables'
-
-const gridBreakpoints = 
+breakPoints.splice(breakPoints.indexOf('xs'),1)
+const gridBreakpoints =
     breakPoints.reduce((acc,val)=>{
       acc[val]={ type: [String, Number], default: ""}
       return acc

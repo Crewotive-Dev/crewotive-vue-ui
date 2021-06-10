@@ -28,7 +28,6 @@ export function getVariable(variableName){
 // variables
 export const themeColors = getVariable('theme-colors')
 export let breakPoints = getVariable('grid-breakpoints')
-breakPoints.splice(breakPoints.indexOf('xs'),1)
 export const colorTints = getVariable('color-tints')
 export const borderWidths = getVariable('border-widths')
 export const clockWays = getVariable('clock-way')
