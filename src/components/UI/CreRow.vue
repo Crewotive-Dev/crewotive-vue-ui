@@ -4,7 +4,8 @@ export default {
   props:{
     cols:{
       required: false,
-      type: String || Number
+      type: [String , Number],
+      default: ""
     }
   },
   computed:{
