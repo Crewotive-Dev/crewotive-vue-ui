@@ -15,8 +15,18 @@ import CreText from '../../components/UI/CreText.vue';
   }}
   decorators={[() => ({ template: '<div class="mt-2"><story/></div>' })]}
   argTypes={{
-    variant: { description: "Color of alert", control: { type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null) } },
-    tint: { control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
+    variant: { description: "Color variant of alert component",
+      control: {
+         type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null)
+      }
+    },
+    tint: { description: "Tint of alert color",
+      control: {
+         type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])
+      }
+    },
+    dismissible: { description: "Dismiss button appears if checked"
+    },
   }}
   />
 
