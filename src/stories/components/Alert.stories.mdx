@@ -1,0 +1,57 @@
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import * as sassVariables from '../../assets/js/sassVariables.js';
+const { themeColors, colorTints } = sassVariables
+
+import CreAlert from '../../components/UI/CreAlert.vue';
+import CreText from '../../components/UI/CreText.vue';
+
+<Meta title="Components/Alert" component={ CreAlert }
+  parameters={{
+    docs:{
+      description: {
+        component: "Use Crewotive’s Alert component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
+      },
+    }
+  }}
+  decorators={[() => ({ template: '<div class="mt-2"><story/></div>' })]}
+  argTypes={{
+    variant: { control: { type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null) } },
+    tint: { control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
+  }}
+  />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes).filter(p=>p!="default"),
+  components: { CreAlert, CreText },
+  template: `
+    <CreAlert v-bind="$props">
+      <CreText v-t.center el=h2 class="alert-heading">
+        {{ (dismissible && "Dismissible ") || '' }} Alert ( {{ $props.variant }}{{ $props.tint && '-'+$props.tint }} )
+      </CreText>
+      <CreText el=h4 class="alert-heading">
+        Well done!
+      </CreText>
+      <CreText el=p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</CreText>
+      <hr>
+      <CreText el=p>
+      A simple {{$props.variant}} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+      </CreText>
+    </CreAlert>`
+});
+
+<div className="d-none">
+
+<Story
+  name="Alert">
+  {Template.bind({})}
+</Story>
+
+</div>
+
+
+<Title/>
+<SubTitle/>
+<Description/>
+<Primary/>
+<ArgsTable of={PRIMARY_STORY} />
+<Stories/>
