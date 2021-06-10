@@ -5,7 +5,7 @@ const { textColors,
   textTransforms,
   textDecorations,
   xAlignments,
-  breakPoints,
+  breakpoints,
   fontSizes,
   fontStyles,
   fontWeights,
@@ -22,14 +22,14 @@ Vue.directive('t',{
     const textColor = modifiers.find(modifier=>!!textColors.find(color=>color==modifier))
 
     // breakpoint values like 'sm, xl __Array
-    const breakpoint = modifiers.filter(modifier=>!!breakPoints.includes(modifier))
+    const breakpoint = modifiers.filter(modifier=>!!breakpoints.includes(modifier))
 
     // text alingments of  x axis like 'start, center, end' __Array
     const textAlignments = modifiers.filter(modifier=>!!xAlignments.includes(modifier))
 
     // font size __String
     const fs = modifiers.find(modifier=>!!fontSizes.find(size=>size==modifier))
-    
+
     // font weight __String
     const fw = modifiers.find(modifier=>!!fontWeights.find(weight=>weight==modifier))
 
@@ -57,7 +57,7 @@ Vue.directive('t',{
 
     if(fs)
       el.classList.add(`fs-${fs}`)
-    
+
     if(fw)
       el.classList.add(`fw-${fw}`)
 

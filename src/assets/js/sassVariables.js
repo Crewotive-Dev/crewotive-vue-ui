@@ -27,7 +27,7 @@ export function getVariable(variableName){
 
 // variables
 export const themeColors = getVariable('theme-colors')
-export let breakPoints = getVariable('grid-breakpoints')
+export let breakpoints = getVariable('grid-breakpoints')
 export const colorTints = getVariable('color-tints')
 export const borderWidths = getVariable('border-widths')
 export const clockWays = getVariable('clock-way')
