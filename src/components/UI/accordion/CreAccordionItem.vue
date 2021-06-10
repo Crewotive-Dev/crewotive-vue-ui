@@ -2,11 +2,6 @@
 export default {
   name: "CreAccordion",
   props: {
-    variant: {
-      required: false,
-      type: String,
-      default: ""
-    },
     stayOpen: {
       required: false,
       type: Boolean,
