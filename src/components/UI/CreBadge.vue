@@ -2,16 +2,22 @@
 export default {
   name: "CreBadge",
   props: {
-    label: {
+    variant: {
       required: false,
       type: String,
-      default: "Badge",
-    }
+      default: "primary",
+    },
+    tint: {
+      type: [String, Number],
+      default: "",
+    },
   },
   computed:{
     styleClasses(){
       const vm = this
-      return{}
+      return{
+        [`bg-${vm.variant}${vm.tint && `-${vm.tint}`}`]: vm.variant
+      }
     }
   }
 };
@@ -19,9 +25,9 @@ export default {
 
 <template>
   <span
-    type="button"
     class="badge"
     :class="styleClasses"
-  > {{ label }}
+  >
+    <slot />
   </span>
 </template>
