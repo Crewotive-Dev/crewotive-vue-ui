@@ -15,7 +15,7 @@ import CreText from '../../components/UI/CreText.vue';
   }}
   decorators={[() => ({ template: '<div class="mt-2"><story/></div>' })]}
   argTypes={{
-    variant: { control: { type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null) } },
+    variant: { description: "Color of alert", control: { type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null) } },
     tint: { control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
   }}
   />
@@ -53,5 +53,5 @@ export const Template = (args, { argTypes }) => ({
 <SubTitle/>
 <Description/>
 <Primary/>
-<ArgsTable of={PRIMARY_STORY} />
+<ArgsTable story="Alert" />
 <Stories/>
