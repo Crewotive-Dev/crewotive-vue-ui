@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "KareTitle",
+  name: "CreText",
   props: {
     el: {
       type: String,
