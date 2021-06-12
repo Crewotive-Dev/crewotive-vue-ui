@@ -22,6 +22,8 @@ const { themeColors, colorTints, breakpoints } = sassVariables
       description: `${breakpoints.join(', ')} sizes of the button.`,  control: { type : 'select', options : breakpoints } },
     tint: {
       description: "Color tint of the button",  control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
+    active: {
+      description: "If checked, add `active` class to item"},
     outline: {
       description: "If checked, outline button appears"},
     click: {

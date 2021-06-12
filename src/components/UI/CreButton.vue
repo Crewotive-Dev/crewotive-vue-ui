@@ -8,22 +8,32 @@ export default {
       default: "",
     },
     size: {
+      required: false,
       type: String,
       default: "",
     },
     variant: {
+      required: false,
       type: String,
-      default: "",
+      default: "primary",
     },
     tint: {
+      required: false,
       type: [String, Number],
       default: "",
     },
     outline: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+    active: {
+      required: false,
       type: Boolean,
       default: false,
     },
     disabled: {
+      required: false,
       type: Boolean,
       default: false,
     },
@@ -35,6 +45,7 @@ export default {
         [`btn-link`]: vm.variant=="link",
         [`btn${vm.outline ? '-outline':''}-${vm.variant}${vm.tint && `-${vm.tint}`}`]: vm.variant && vm.variant!='link',
         [`btn-${vm.size}`] : vm.size,
+        [`active`] : vm.active,
       }
     }
   }
