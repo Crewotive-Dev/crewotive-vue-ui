@@ -26,23 +26,25 @@ export function getVariable(variableName){
 
 
 // variables
-export const themeColors = getVariable('theme-colors')
-export let breakpoints = getVariable('grid-breakpoints')
-export const colorTints = getVariable('color-tints')
 export const borderWidths = getVariable('border-widths')
+export const breakpoints = getVariable('grid-breakpoints')
+export const breadcrumbDivider = getVariable('breadcrumb-divider')
 export const clockWays = getVariable('clock-way')
+export const colorTints = getVariable('color-tints')
+export const fontSizes = getVariable('font-sizes')
+export const themeColors = getVariable('theme-colors')
 export const xAlignments = getVariable('x-alignments')
 export const yAlignments = getVariable('y-alignments')
-export const fontSizes = getVariable('font-sizes')
 
 // utility variables
-export const textColors = getUtilityVariable('color')
-export const textDecorations = getUtilityVariable('text-decoration')
-export const textTransforms = getUtilityVariable('text-transform')
+export const aligns = {
+  'items': [...getUtilityVariable('align-items')],
+  'content': [...getUtilityVariable('align-content')],
+  'self': [...getUtilityVariable('align-self')],
+}
+export const displays = [...getUtilityVariable('display'),'print']
 export const fontWeights = getUtilityVariable('font-weight')
 export const fontStyles = getUtilityVariable('font-style')
-export const lineHeights = getUtilityVariable('line-height')
-export const displays = [...getUtilityVariable('display'),'print']
 export const flexibles = [
   ...getUtilityVariable('flex'),
   ...getUtilityVariable('flex-wrap'),
@@ -51,13 +53,10 @@ export const flexibles = [
   ...getUtilityVariable('flex-direction')
 ]
 export const justifies = getUtilityVariable('justify-content')
-export const aligns = {
-  'items': [...getUtilityVariable('align-items')],
-  'content': [...getUtilityVariable('align-content')],
-  'self': [...getUtilityVariable('align-self')],
-}
+export const lineHeights = getUtilityVariable('line-height')
 export const orders = getUtilityVariable('order')
-
-
-export const whiteSpaces = [...getUtilityVariable('white-space'),...getUtilityVariable('word-wrap')]
 export const utilitiesVariables = Object.entries(vg['$utilities'].value)
+export const textColors = getUtilityVariable('color')
+export const textDecorations = getUtilityVariable('text-decoration')
+export const textTransforms = getUtilityVariable('text-transform')
+export const whiteSpaces = [...getUtilityVariable('white-space'),...getUtilityVariable('word-wrap')]

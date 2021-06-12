@@ -1,0 +1,74 @@
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import * as sassVariables from '../../assets/js/sassVariables.js';
+const { breadcrumbDivider } = sassVariables
+
+import CreBreadcrumb from '../../components/UI/breadcrumb/CreBreadcrumb.vue';
+import CreBreadcrumbItem from '../../components/UI/breadcrumb/CreBreadcrumbItem.vue';
+
+<Meta title="Components/Breadcrumb" component={ CreBreadcrumbItem }
+  parameters={{
+    docs:{
+      description: {
+        component: "Use Crewotive’s Breadcrumb component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
+      },
+    }
+  }}
+  decorators={[() => ({ template: '<div class="mt-2"><story/></div>' })]}
+  argTypes={{
+    active: {
+      description: "If checked, add `active` class to item",
+    },
+    divider: {
+      description: "Dividers are automatically added in CSS through `::before` and content. They can be changed by modifying a local CSS custom property `--cre-breadcrumb-divider`, or through the `$breadcrumb-divider` Sass variable",
+    },
+  }}
+  args={{
+    divider: breadcrumbDivider
+  }}
+  />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes).filter(p=>!["default"].includes(p)),
+  components: { CreBreadcrumb, CreBreadcrumbItem },
+  template: `
+  <CreBreadcrumb :divider="$props.divider">
+    <CreBreadcrumbItem :active="$props.active" v-for='n in 3'>
+      Page {{n}}
+    </CreBreadcrumbItem>
+  </CreBreadcrumb>
+  `
+});
+
+<div className="d-none">
+
+<Story
+  name="Breadcrumb">
+  {Template.bind({})}
+</Story>
+
+</div>
+
+
+<Title/>
+<SubTitle/>
+<Description/>
+<Primary/>
+<ArgsTable story="Breadcrumb" />
+
+### SASS
+#### Variables
+```SCSS
+$breadcrumb-font-size:              null;
+$breadcrumb-padding-y:              0;
+$breadcrumb-padding-x:              0;
+$breadcrumb-item-padding-x:         .5rem;
+$breadcrumb-margin-bottom:          1rem;
+$breadcrumb-bg:                     null;
+$breadcrumb-divider-color:          $gray-600;
+$breadcrumb-active-color:           $gray-600;
+$breadcrumb-divider:                quote("/"); // just an example
+$breadcrumb-divider-flipped:        $breadcrumb-divider;
+$breadcrumb-border-radius:          null;
+```
+
+<Stories/>
