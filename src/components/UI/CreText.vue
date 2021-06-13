@@ -6,7 +6,7 @@ export default {
       type: String,
       default: "p",
     },
-    color: {
+    variant: {
       type: String,
       default: "",
     },
@@ -23,7 +23,7 @@ export default {
     styleClasses(){
       const vm = this
       return {
-      [`text-${vm.color}`] : vm.color,
+      [`text-${vm.variant}`] : vm.variant,
       [`fw-${vm.weight}`] : vm.weight,
       [`fs-${vm.size}`] : vm.size
     }
