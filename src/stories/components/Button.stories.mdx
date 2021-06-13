@@ -18,6 +18,8 @@ const { themeColors, colorTints, breakpoints } = sassVariables
       description: "Label of the button",  control: { type: 'text'} },
     variant: {
       description: "Color variant of the button",  control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
+    type: {
+      description: "You can specify the button's type by setting the prop type to `button`, `submit` or `reset`. The default type is `button`.",  control: { type : 'select', options : ["button","submit","reset"] } },
     size: {
       description: `${breakpoints.join(', ')} sizes of the button.`,  control: { type : 'select', options : breakpoints } },
     tint: {

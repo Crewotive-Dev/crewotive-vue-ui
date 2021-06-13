@@ -2,20 +2,25 @@
 export default {
   name: "CreButton",
   props: {
+    variant: {
+      required: false,
+      type: String,
+      default: "primary",
+    },
     label: {
       required: false,
       type: String,
       default: "",
     },
+    type:{
+      required: false,
+      type: String,
+      default: "button"
+    },
     size: {
       required: false,
       type: String,
       default: "",
-    },
-    variant: {
-      required: false,
-      type: String,
-      default: "primary",
     },
     tint: {
       required: false,
@@ -54,7 +59,7 @@ export default {
 
 <template>
   <button
-    type="button"
+    :type="type"
     class="btn"
     :disabled="disabled"
     :class="styleClasses"
