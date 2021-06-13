@@ -31,8 +31,8 @@ export const Template = (args, { argTypes, ...vm }) => ({
   props: Object.keys(vm.parameters.component.props),
   components: { CreBreadcrumb, CreBreadcrumbItem },
   template: `
-  <CreBreadcrumb :divider="$props.divider">
-    <CreBreadcrumbItem :active="$props.active" v-for='n in 3'>
+  <CreBreadcrumb :divider="'${args.divider}'">
+    <CreBreadcrumbItem v-bind="$props" v-for='n in 3'>
       Page {{n}}
     </CreBreadcrumbItem>
   </CreBreadcrumb>
