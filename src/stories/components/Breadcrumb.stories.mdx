@@ -27,8 +27,8 @@ import CreBreadcrumbItem from '../../components/UI/breadcrumb/CreBreadcrumbItem.
   }}
   />
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes).filter(p=>!["default"].includes(p)),
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.keys(vm.parameters.component.props),
   components: { CreBreadcrumb, CreBreadcrumbItem },
   template: `
   <CreBreadcrumb :divider="$props.divider">

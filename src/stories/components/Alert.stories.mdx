@@ -30,8 +30,8 @@ import CreText from '../../components/UI/CreText.vue';
   }}
   />
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes).filter(p=>p!="default"),
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.keys(vm.parameters.component.props),
   components: { CreAlert, CreText },
   template: `
     <CreAlert v-bind="$props">

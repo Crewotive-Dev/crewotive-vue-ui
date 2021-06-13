@@ -33,8 +33,8 @@ const { themeColors, colorTints, breakpoints } = sassVariables
   }}
   />
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.keys(vm.parameters.component.props),
   components: { CreButton },
   template: `<cre-button v-bind="$props" @click="buttonClick"/>`,
   methods: {
