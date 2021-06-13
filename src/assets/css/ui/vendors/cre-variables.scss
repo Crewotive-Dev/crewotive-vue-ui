@@ -1,5 +1,6 @@
 $enable-shadows: true;
 $enable-negative-margins: true;
+$variable-prefix: cre-;
 
 @import "bootstrap/scss/variables";
 
@@ -8,7 +9,6 @@ $spacers: ();
 $clock-way: ("top","tr","end","br","bottom","bl","start","tl");
 $x-alignments: ("start","center","end");
 $y-alignments: ("top","center","bottom");
-$variable-prefix: cre-;
 
 $font-weights: ($font-weight-lighter,$font-weight-light,$font-weight-normal,$font-weight-bold,$font-weight-bolder,$font-weight-base);
 
