@@ -2,6 +2,7 @@ import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, 
 
 import CreAccordion from '../../components/UI/accordion/CreAccordion.vue';
 import CreAccordionItem from '../../components/UI/accordion/CreAccordionItem.vue';
+import CreText from '../../components/UI/CreText.vue';
 
 <Meta title="Components/Accordion" component={ CreAccordionItem }
   parameters={{
@@ -25,12 +26,12 @@ import CreAccordionItem from '../../components/UI/accordion/CreAccordionItem.vue
 
 export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  components: { CreAccordion, CreAccordionItem },
+  components: { CreAccordion, CreAccordionItem, CreText },
   template: `
     <CreAccordion :flush="$props.flush">
       <CreAccordionItem :stayOpen="$props.stayOpen" v-for="n in 3">
         <span slot="accordion-header">
-          <h2>header {{n}}</h2>
+          <CreText el=h2>header {{n}}</CreText>
         </span>
         <span slot="accordion-body">
           body {{n}}
