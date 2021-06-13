@@ -8,9 +8,8 @@ export function getUtilityVariable(utilityName){
   const type = variables.type
   if(type == 'SassMap')
     return Object.keys(value)
-  if(type == 'SassList'){
+  if(type == 'SassList')
     return value.map(e=>e.value)
-  }
   return value
 }
 

@@ -30,12 +30,12 @@ export const Template = (args, { argTypes, ...vm }) => ({
   template: `
     <CreAccordion :flush="${args.flush}">
       <CreAccordionItem v-bind="$props" v-for="n in 3">
-        <template #accordion-header>
+        <div slot="accordion-header">
           <CreText el=h2>header {{n}}</CreText>
-        </template>
-        <template #accordion-body>
+        </div>
+        <div slot="accordion-body">
           body {{n}}
-        </template>
+        </div>
       </CreAccordionItem>
     </CreAccordion>`
 });
