@@ -4,49 +4,35 @@ $utilities: map-merge(
   $utilities,
   (
     // border start
+    "border-width": null,
     "border": map-merge(
       map-get($utilities, "border"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "border"), "values"),
-          $border-side-widths,
-        ),
+        values: $border-side-widths,
       ),
     ),
     "border-start": map-merge(
       map-get($utilities, "border-start"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "border-start"), "values"),
-          $border-side-widths,
-        ),
+        values: $border-side-widths,
       ),
     ),
     "border-end": map-merge(
       map-get($utilities, "border-end"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "border-end"), "values"),
-          $border-side-widths,
-        ),
+        values: $border-side-widths,
       ),
     ),
     "border-top": map-merge(
       map-get($utilities, "border-top"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "border-top"), "values"),
-          $border-side-widths,
-        ),
+        values:  $border-side-widths,
       ),
     ),
     "border-bottom": map-merge(
       map-get($utilities, "border-bottom"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "border-bottom"), "values"),
-          $border-side-widths,
-        ),
+        values:  $border-side-widths,
       ),
     ),
     // border end
