@@ -51,6 +51,8 @@ export const flexibles = [
   ...getUtilityVariable('flex-shrink'),
   ...getUtilityVariable('flex-direction')
 ]
+export const objectFits =getUtilityVariable('object-fit')
+export const objectPositions =getUtilityVariable('object-position')
 export const justifies = getUtilityVariable('justify-content')
 export const lineHeights = getUtilityVariable('line-height')
 export const orders = getUtilityVariable('order')

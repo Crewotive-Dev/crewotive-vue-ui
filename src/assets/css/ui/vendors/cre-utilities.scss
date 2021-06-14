@@ -85,6 +85,19 @@ $utilities: map-merge(
     ),
     // border-radius end
 
+    // Object start
+    "object-fit": (
+      property: object-fit,
+      class: object,
+      values: cover contain initial
+    ),
+    "object-position": (
+      property: object-position,
+      class: object,
+      values: left right bottom top
+    ),
+    // Object end
+
     // Rounded start
     "rounded": null,
     "rounded-top": null,

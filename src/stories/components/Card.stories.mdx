@@ -1,6 +1,6 @@
 import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
 import * as sassVariables from '../../assets/js/sassVariables.js';
-const { textColors } = sassVariables
+const { textColors, objectPositions, objectFits } = sassVariables
 
 import CreCard from '../../components/UI/CreCard.vue';
 import CreText from '../../components/UI/CreText.vue';
@@ -18,16 +18,24 @@ import CreButton from '../../components/UI/CreButton.vue';
   argTypes={{
     textVariant: {
       description: "Text color variant of the card",  control: { type : 'select', options : textColors.filter(val=>val.match(/-\d$/g)==null) } },
+    imgSrc:{
+      description: "Image src attribute of the card component"},
+    imgAlt: {},
     imgOverlay:{
       description: "Turn an image into a card `background` and overlay your card’s text."},
+    imgOnSide:{},
+    imgFit: {
+      description: "`object-fit` property of the card image element",  control: { type : 'select', options : objectFits} },
+    imgFitPosition: {
+      description: "`object-position` property of the card image element",  control: { type : 'select', options : objectPositions} },
+    imgPosition: {
+      description: "Position of the card image",  control: { type : 'select', options : ['after','before']} },
     noHeader:{
       description: "If checked, hides header section of the card component"},
-    imgSrc:{
-      description: "Image src attribute of the card component"}
   }}
   args={{
     imgSrc: "https://picsum.photos/500/300",
-    imgAlt: "Card header image",
+    imgAlt: "Card header image"
   }}
   />
 
@@ -36,7 +44,7 @@ export const Template = (args, { argTypes, ...vm }) => ({
   components: { CreCard, CreText, CreButton },
   template: `
   <CreCard
-    style="width: 20rem"
+    style="width: 30rem"
     v-radius.5
     v-bind="$props"
     >
