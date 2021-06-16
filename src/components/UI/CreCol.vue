@@ -8,7 +8,7 @@ const gridBreakpoints =
     },{})
 
 export default {
-  name: "KareCol",
+  name: "CreCol",
   props: {
     col: {
       type: [String, Number],

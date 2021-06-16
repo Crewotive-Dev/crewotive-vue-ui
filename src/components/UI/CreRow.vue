@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "KareRow",
+  name: "CreRow",
   props:{
     cols:{
       required: false,

@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "KareContainer",
+  name: "CreContainer",
   props: {
     fluid: {
       type: Boolean,
