@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import '@/plugins/globalComponents.js'
 import '@/directives/UI/UIDirectives.js'
-import '@/assets/js/bootstrap/bootstrap.esm.min'
+require('bootstrap/dist/js/bootstrap.bundle')
 Vue.config.productionTip = false
 
 new Vue({
