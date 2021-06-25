@@ -10,6 +10,14 @@ $clock-way: ("top","tr","end","br","bottom","bl","start","tl");
 $x-alignments: ("start","center","end");
 $y-alignments: ("top","center","bottom");
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
 $font-weights: ($font-weight-lighter,$font-weight-light,$font-weight-normal,$font-weight-bold,$font-weight-bolder,$font-weight-base);
 
 @for $s from 0 through 10{
