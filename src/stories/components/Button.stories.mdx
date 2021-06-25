@@ -28,6 +28,8 @@ const { themeColors, colorTints, breakpoints } = sassVariables
       description: "If checked, add `active` class to item"},
     outline: {
       description: "If checked, outline button appears"},
+    close: {
+      description: "If checked, close button appears. If you want to you dark mode of close button use `white` variant property." },
     click: {
       description: "Button click action",  action: 'buttonClick' }
   }}
@@ -71,6 +73,13 @@ export const Template = (args, { argTypes, ...vm }) => ({
     outline: true,
     variant : "link",
     size : "md",
+    }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story
+    name='Close button' args={{
+    close : true,
     }}>
     {Template.bind({})}
   </Story>

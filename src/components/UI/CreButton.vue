@@ -42,16 +42,30 @@ export default {
       type: Boolean,
       default: false,
     },
+    close: {
+      required: false,
+      type: Boolean,
+      default: false,
+    }
   },
   computed:{
     styleClasses(){
       const vm = this
-      return{
-        [`btn-link`]: vm.variant=="link",
-        [`btn${vm.outline ? '-outline':''}-${vm.variant}${vm.tint && `-${vm.tint}`}`]: vm.variant && vm.variant!='link',
-        [`btn-${vm.size}`] : vm.size,
+      let styles = {}
+      if(!vm.close)
+        styles = {
+          ...styles,
+          [`btn-link`]: vm.variant=="link",
+          [`btn${vm.outline ? '-outline':''}-${vm.variant}${vm.tint && `-${vm.tint}`}`]: vm.variant && vm.variant!='link',
+          [`btn-${vm.size}`] : vm.size,
+        }
+      styles = {
+        ...styles,
         [`active`] : vm.active,
+        [`btn-close`] : vm.close,
+        [`btn-close-white`] : vm.variant == 'white',
       }
+      return styles
     }
   }
 };
@@ -65,6 +79,9 @@ export default {
     :class="styleClasses"
     @click="$emit('click')"
   >
-    {{ label }}
+    <template v-if="!close">
+      {{ label }}
+    </template>
+    <slot />
   </button>
 </template>
