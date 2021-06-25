@@ -41,7 +41,7 @@ export default {
       class="d-block w-100"
       :alt="imgAlt"
     >
-    <div class="carousel-caption d-none d-md-block">
+    <div class="carousel-caption d-none d-sm-block">
       <slot name="carousel-caption" />
       <slot />
     </div>
