@@ -34,6 +34,8 @@ export const fontSizes = getVariable('font-sizes')
 export const themeColors = getVariable('theme-colors')
 export const xAlignments = getVariable('x-alignments')
 export const yAlignments = getVariable('y-alignments')
+export const spacer = getVariable('spacer')
+export const spacers = getVariable('spacers')
 
 // utility variables
 export const aligns = {

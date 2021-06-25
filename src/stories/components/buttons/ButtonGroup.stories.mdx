@@ -1,0 +1,67 @@
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import CreButton from '@/components/UI/buttons/CreButton.vue';
+import CreButtonGroup from '@/components/UI/buttons/CreButtonGroup.vue';
+import * as sassVariables from '@/assets/js/sassVariables.js';
+const { breakpoints, spacers } = sassVariables
+
+<Meta title="Components/Buttons/Button group" component={ CreButtonGroup }
+  parameters={{
+    docs:{
+      description: {
+        component: "Use Crewotive’s button group component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
+      },
+    }
+  }}
+  decorators={[() => ({ template: '<div class="d-flex justify-content-center"><story/></div>' })]}
+  argTypes={{
+    size: {
+      description: `${breakpoints.join(', ')} sizes of the buttons in button group.`,  control: { type : 'select', options : breakpoints } },
+    vertical: {
+      description: `Align buttons vertical.` },
+    gap: {
+      description: "Gap between of buttons inside button group. Values comes from `$spacers` SASS variable",  control: { type : 'range', min : parseInt(spacers[0]), max : parseInt(spacers[spacers.length-1])} },
+  }}
+  />
+
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.keys(vm.parameters.component.props),
+  components: { CreButtonGroup, CreButton },
+  template: `
+    <CreButtonGroup v-bind="$props">
+      <CreButton label='button 1' variant=primary />
+      <CreButton label='button 2' variant=danger />
+      <CreButton label='button 3' variant=warning />
+    </CreButtonGroup>
+  `
+});
+
+<div className="d-none">
+
+  <Story
+    name='Horizontal' >
+    {Template.bind({})}
+  </Story>
+
+  <Story
+    name='Vertical'
+    args={{
+      vertical: true
+    }}>
+    {Template.bind({})}
+  </Story>
+
+</div>
+
+<Title/>
+<SubTitle/>
+<Description/>
+<Primary/>
+<ArgsTable story="Horizontal" />
+
+<!-- ### SASS
+#### Variables
+```
+``` -->
+
+
+<Stories/>
