@@ -32,10 +32,7 @@ import CreButton from '@/components/UI/buttons/CreButton.vue';
   />
 
 export const Template = (args, { argTypes, ...vm }) => ({
-  props: Object.entries(argTypes).filter(e=>!!e[1].description).map(e=>{
-    console.log(e)
-    return e[0]
-  }),
+  props: Object.entries(argTypes).filter(e=>!!e[1].description).map(e=>e[0]),
   components: { CreButton },
   template: `<CreButton :close=true v-bind="$props" @click="buttonClick"/>`,
   methods: {

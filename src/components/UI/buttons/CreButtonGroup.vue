@@ -22,8 +22,8 @@ export default {
     styleClasses(){
       const vm = this
       return {
+        [`btn-group${vm.vertical ? `-vertical`:``}`]: true,
         [`btn-group-${vm.size}`] : vm.size,
-        [`btn-group-vertical`] : vm.vertical,
         [`gap-${vm.gap}`]: vm.gap
       }
     }
@@ -34,7 +34,6 @@ export default {
 
 <template>
   <div
-    class="btn-group"
     :class="styleClasses"
     role="group"
     aria-label="Button group"
