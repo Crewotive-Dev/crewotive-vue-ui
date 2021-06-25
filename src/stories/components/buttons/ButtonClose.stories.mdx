@@ -1,0 +1,81 @@
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions'
+import CreButton from '@/components/UI/buttons/CreButton.vue';
+
+<Meta title="Components/Buttons/Close Button" component={ CreButton }
+  parameters={{
+    docs:{
+      description: {
+        component: "Use Crewotive’s  button component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
+      },
+    }
+  }}
+  decorators={[() => ({ template: '<div class="d-flex justify-content-center"><story/></div>' })]}
+  args={{
+    close: true,
+    variant: ''
+  }}
+  argTypes={{
+    label: {table: {disable: true}},
+    type: {table: {disable: true}},
+    size: {table: {disable: true}},
+    tint: {table: {disable: true}},
+    outline: {table: {disable: true}},
+    close: {table: {disable: true}},
+    active: {
+      description: "If checked, add `active` class to item"},
+    click: {
+      description: "Button click action",  action: 'buttonClick' },
+    variant: {
+      description: "Color variant of the button",  control: { type : 'select', options : ['default','white'] } },
+  }}
+  />
+
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.entries(argTypes).filter(e=>!!e[1].description).map(e=>{
+    console.log(e)
+    return e[0]
+  }),
+  components: { CreButton },
+  template: `<CreButton :close=true v-bind="$props" @click="buttonClick"/>`,
+  methods: {
+    buttonClick: action('click')
+  }
+});
+
+<div className="d-none">
+
+  <Story
+    name='Close Button' args={{
+    close : true,
+    }}>
+    {Template.bind({})}
+  </Story>
+
+</div>
+
+<Title/>
+<SubTitle/>
+<Description/>
+<Primary/>
+<ArgsTable story="Close Button" />
+
+### SASS
+#### Variables
+```SCSS
+$btn-close-width:            1em;
+$btn-close-height:           $btn-close-width;
+$btn-close-padding-x:        .25em;
+$btn-close-padding-y:        $btn-close-padding-x;
+$btn-close-color:            $black;
+$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
+$btn-close-focus-shadow:     $input-btn-focus-box-shadow;
+$btn-close-opacity:          .5;
+$btn-close-hover-opacity:    .75;
+$btn-close-focus-opacity:    1;
+$btn-close-disabled-opacity: .25;
+$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%);
+```
+
+
+<Stories/>
