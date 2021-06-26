@@ -1,4 +1,4 @@
-const variables = require('sass-extract-loader!@/assets/css/ui/vendors/cre-bootstrap.scss');
+const variables = require('sass-extract-loader?{"includePaths": ["./node_modules/"]}!@/assets/css/ui/vendors/cre-bootstrap.scss');
 
 export const vg = variables.global
 
