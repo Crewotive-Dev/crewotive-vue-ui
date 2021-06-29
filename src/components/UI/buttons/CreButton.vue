@@ -55,8 +55,8 @@ export default {
       if(!vm.close)
         styles = {
           ...styles,
-          [`btn-link`]: vm.variant=="link",
           [`btn${vm.outline ? '-outline':''}-${vm.variant}${vm.tint && `-${vm.tint}`}`]: vm.variant && vm.variant!='link',
+          [`btn-link`]: vm.variant=="link",
           [`btn-${vm.size}`] : vm.size,
         }
       styles = {
