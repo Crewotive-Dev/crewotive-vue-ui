@@ -50,6 +50,11 @@ $color-tints: (1: 80,2: 60,3: 40,4: 20,5: null,6: 20,7: 40,8: 60,9: 80);
 // theme-colors end
 
 // Border start
+
+$border-radius:               .25rem !default;
+$border-radius-xs:            .2rem !default;
+$border-radius-xl:            .4rem !default;
+
 $border-width: .2rem;
 $border-width-count: 10;
 $border-side-widths: () !default;
@@ -64,3 +69,33 @@ $border-widths: () !default;
 // Breadcrumb start
 $breadcrumb-divider: '→';
 // Breadcrumb end
+
+
+// Input buttons start
+$input-btn-padding-y-xs:      .15rem !default;
+$input-btn-padding-x-xs:      .3rem !default;
+$input-btn-font-size-xs:      $font-size-sm * 0.8 !default;
+
+
+$input-btn-padding-y-xl:      .75rem !default;
+$input-btn-padding-x-xl:      1.25rem !default;
+$input-btn-font-size-xl:      $font-size-lg * 1.2 !default;
+// Input buttons end
+
+// Buttons start
+$btn-padding-y-xs:      $input-btn-padding-y-xs !default;
+$btn-padding-x-xs:      $input-btn-padding-x-xs !default;
+$btn-font-size-xs:      $input-btn-font-size-xs !default;
+
+
+$btn-padding-y-xl:      $input-btn-padding-y-xl !default;
+$btn-padding-x-xl:      $input-btn-padding-x-xl !default;
+$btn-font-size-xl:      $input-btn-font-size-xl !default;
+
+
+$btn-border-radius:           0;
+$btn-border-radius-xs:        $btn-border-radius * 0.6 ;
+$btn-border-radius-sm:        $btn-border-radius * 0.8 ;
+$btn-border-radius-lg:        $btn-border-radius * 1.2 ;
+$btn-border-radius-xl:        $btn-border-radius * 1.4 ;
+// Buttons end
