@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+storybook-static
+ftp-deploy.js
 
 # local env files
 .env.local

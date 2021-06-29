@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "run-p serve sb",
     "serve": "vue-cli-service serve",
-    "sb": "start-storybook -p 6006",
+    "sb": "start-storybook -p 6006 --no-manager-cache",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build-storybook": "build-storybook",
-    "build-storybook-docs": "build-storybook --docs"
+    "build-storybook-docs": "build-storybook --docs",
+    "deploy-storybook-ftp": "node ftp-deploy",
+    "deploy": "npm-run-all build-storybook deploy-storybook-ftp"
   },
   "dependencies": {
     "bootstrap": "^5.0.1",
@@ -32,6 +34,7 @@
     "css-loader": "^5.2.4",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "ftp-deploy": "^2.4.1",
     "node-sass": "^6.0.1",
     "node-sass-alias-importer": "^1.0.2",
     "node-sass-tilde-importer": "^1.0.2",
