@@ -20,7 +20,8 @@ import CreText from '@/components/UI/CreText.vue';
          type : 'select', options : themeColors.filter(val=>val.match(/-\d$/g)==null)
       }
     },
-    tint: { description: "Tint of alert color",
+    tint: {
+      description: "Tint of alert color",
       control: {
          type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])
       }

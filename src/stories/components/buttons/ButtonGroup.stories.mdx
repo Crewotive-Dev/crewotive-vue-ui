@@ -15,11 +15,16 @@ const { breakpoints, spacers } = sassVariables
   decorators={[() => ({ template: '<div class="d-flex justify-content-center"><story/></div>' })]}
   argTypes={{
     size: {
-      description: `${breakpoints.join(', ')} sizes of the buttons in button group.`,  control: { type : 'select', options : breakpoints } },
+      description: `${breakpoints.join(', ')} sizes of the buttons in button group.`,
+      control: { type : 'select', options : [...breakpoints] }
+    },
     vertical: {
-      description: `Align buttons vertical.` },
+      description: `Align buttons vertical.`
+    },
     gap: {
-      description: "Gap between of buttons inside button group. Values comes from `$spacers` SASS variable",  control: { type : 'range', min : parseInt(spacers[0]), max : parseInt(spacers[spacers.length-1])} },
+      description: "Gap between of buttons inside button group. Values comes from `$spacers` SASS variable",
+      control: { type : 'range', min : parseInt(spacers[0]), max : parseInt(spacers[spacers.length-1])}
+    },
   }}
   />
 

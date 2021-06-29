@@ -15,23 +15,37 @@ const { themeColors, colorTints, breakpoints } = sassVariables
   decorators={[() => ({ template: '<div class="d-flex justify-content-center"><story/></div>' })]}
   argTypes={{
     label: {
-      description: "Label of the button",  control: { type: 'text'} },
+      description: "Label of the button",
+      control: { type: 'text'}
+    },
     variant: {
-      description: "Color variant of the button",  control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
+      description: "Color variant of the button",
+      control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] }
+    },
     type: {
-      description: "You can specify the button's type by setting the prop type to `button`, `submit` or `reset`. The default type is `button`.",  control: { type : 'select', options : ["button","submit","reset"] } },
+      description: "You can specify the button's type by setting the prop type to `button`, `submit` or `reset`. The default type is `button`.",
+      control: { type : 'select', options : ["button","submit","reset"] }
+    },
     size: {
-      description: `${breakpoints.join(', ')} sizes of the button.`,  control: { type : 'select', options : breakpoints } },
+      description: `${breakpoints.join(', ')} sizes of the button.`,
+      control: { type : 'select', options : breakpoints }
+    },
     tint: {
-      description: "Color tint of the button",  control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])} },
+      description: "Color tint of the button",
+      control: { type : 'range', min : parseInt(colorTints[0]), max : parseInt(colorTints[colorTints.length-1])}
+    },
     active: {
-      description: "If checked, add `active` class to item"},
+      description: "If checked, add `active` class to item"
+    },
     outline: {
-      description: "If checked, outline button appears"},
+      description: "If checked, outline button appears"
+    },
     close: {
-      description: "If checked, close button appears. If you want to use dark mode of close button use `white` variant property." },
+      description: "If checked, close button appears. If you want to use dark mode of close button use `white` variant property."
+    },
     click: {
-      description: "Button click action",  action: 'buttonClick' }
+      description: "Button click action",  action: 'buttonClick'
+    }
   }}
   />
 

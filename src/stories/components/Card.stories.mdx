@@ -17,21 +17,32 @@ import CreButton from '@/components/UI/buttons/CreButton.vue';
   decorators={[() => ({ template: '<div class=""><story/></div>' })]}
   argTypes={{
     textVariant: {
-      description: "Text color variant of the card",  control: { type : 'select', options : textColors.filter(val=>val.match(/-\d$/g)==null) } },
+      description: "Text color variant of the card",
+      control: { type : 'select', options : textColors.filter(val=>val.match(/-\d$/g)==null) }
+    },
     imgSrc:{
-      description: "Image src attribute of the card component"},
+      description: "Image src attribute of the card component"
+    },
     imgAlt: {},
     imgOverlay:{
-      description: "Turn an image into a card `background` and overlay your card’s text."},
+      description: "Turn an image into a card `background` and overlay your card’s text."
+    },
     imgOnSide:{},
     imgFit: {
-      description: "`object-fit` property of the card image element",  control: { type : 'select', options : objectFits} },
+      description: "`object-fit` property of the card image element",
+      control: { type : 'select', options : objectFits}
+    },
     imgFitPosition: {
-      description: "`object-position` property of the card image element",  control: { type : 'select', options : objectPositions} },
+      description: "`object-position` property of the card image element",
+      control: { type : 'select', options : objectPositions}
+    },
     imgPosition: {
-      description: "Position of the card image",  control: { type : 'select', options : ['after','before']} },
+      description: "Position of the card image",
+      control: { type : 'select', options : ['after','before']}
+    },
     noHeader:{
-      description: "If checked, hides header section of the card component"},
+      description: "If checked, hides header section of the card component"
+    },
   }}
   args={{
     imgSrc: "https://picsum.photos/500/300",
