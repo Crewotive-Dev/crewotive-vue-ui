@@ -16,6 +16,11 @@ export default {
       type: [String, Number],
       default: "",
     },
+    label: {
+      type: String,
+      required: false,
+      default: ''
+    },
     autoClose: {
       required: false,
       type: String,
@@ -81,7 +86,7 @@ export default {
       aria-expanded="false"
       :class="styleClasses"
     >
-      Action
+      {{ label }}
     </button>
     <button
       v-if="split && position!='start'"

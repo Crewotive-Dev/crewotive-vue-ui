@@ -2,6 +2,7 @@ import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Primary, 
 import { action } from '@storybook/addon-actions'
 
 import CreDropdown from '@/components/UI/dropdown/CreDropdown.vue';
+import CreButton from '@/components/UI/buttons/CreButton.vue';
 import CreDropdownItem from '@/components/UI/dropdown/CreDropdownItem.vue';
 import CreText from '@/components/UI/CreText.vue';
 
@@ -17,6 +18,7 @@ const { themeColors, colorTints, breakpoints } = sassVariables
     },
   }}
   argTypes={{
+    template:{ table: { disable: true }},
     variant: {
       description: "Color variant of the button",
       control: { type : 'select', options : [...themeColors.filter(val=>val.match(/-\d$/g)==null),'link'] } },
@@ -33,17 +35,17 @@ const { themeColors, colorTints, breakpoints } = sassVariables
       description: `By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the autoClose option to change this behavior of the dropdown.`,
       control: {type: 'select',options : ["true","inside", "outside", "false"]}},
     click: {
-      description: "Button click action",  action: 'buttonClick' }
+      description: "If buttons splited, splitted button's click action",  action: 'buttonClick' }
   }}
-  decorators={[() => ({ template: '<div class="d-flex justify-content-center m-7"><story/></div>' })]}
+  decorators={[() => ({ template: '<div style="height: 400px" class="d-flex justify-content-center align-items-center w-100"><story/></div>' })]}
   />
 
 export const Template = (args, { argTypes, ...vm }) => ({
   props: Object.keys(vm.parameters.component.props),
-  components: { CreDropdown, CreDropdownItem, CreText },
-  template: `
+  components: { CreDropdown, CreDropdownItem, CreButton, CreText },
+  template: args.template||`
     <CreDropdown v-bind='$props'  @click='buttonClick'>
-      <CreDropdownItem :active="n%2==0" v-for="n in 4">
+      <CreDropdownItem :divider="n%2==0" v-for="n in 5">
         item {{n}}
       </CreDropdownItem>
     </CreDropdown>
@@ -53,10 +55,51 @@ export const Template = (args, { argTypes, ...vm }) => ({
   }
 });
 
+
 <div className="d-none">
 
 <Story
   name="Dropdown"
+  args={{
+    label: 'Dropdown'
+  }}
+>
+{Template.bind({})}
+</Story>
+
+
+<Story
+  name="Custom content"
+  args={{
+  label: 'Custom',
+  autoClose: `false`,
+  template: `
+    <CreDropdown v-bind='$props'  @click='buttonClick'>
+      <form style="width: 400px" class="px-4 py-3">
+        <div class="mb-3">
+          <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+        </div>
+        <div class="mb-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+            <label class="form-check-label" for="dropdownCheck">
+              Remember me
+            </label>
+          </div>
+        </div>
+        <CreButton type="button" variant=success >Sign in</CreButton>
+      </form>
+      <div class="dropdown-divider"></div>
+      <CreDropdownItem role=button class="dropdown-item">New around here? Sign up</CreDropdownItem>
+      <CreDropdownItem role=button class="dropdown-item">Forgot password?</CreDropdownItem>
+    </CreDropdown>
+    `
+  }}
 >
 {Template.bind({})}
 </Story>
@@ -73,7 +116,49 @@ export const Template = (args, { argTypes, ...vm }) => ({
 ### SASS
 #### Variables
 ```SCSS
+$dropdown-min-width:                10rem;
+$dropdown-padding-x:                0;
+$dropdown-padding-y:                .5rem;
+$dropdown-spacer:                   .125rem;
+$dropdown-font-size:                $font-size-base;
+$dropdown-color:                    $body-color;
+$dropdown-bg:                       $white;
+$dropdown-border-color:             rgba($black, .15);
+$dropdown-border-radius:            $border-radius;
+$dropdown-border-width:             $border-width;
+$dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width);
+$dropdown-divider-bg:               $dropdown-border-color;
+$dropdown-divider-margin-y:         $spacer * .5;
+$dropdown-box-shadow:               $box-shadow;
 
+$dropdown-link-color:               $gray-900;
+$dropdown-link-hover-color:         shade-color($gray-900, 10%);
+$dropdown-link-hover-bg:            $gray-200;
+
+$dropdown-link-active-color:        $component-active-color;
+$dropdown-link-active-bg:           $component-active-bg;
+
+$dropdown-link-disabled-color:      $gray-500;
+
+$dropdown-item-padding-y:           $spacer * .25;
+$dropdown-item-padding-x:           $spacer;
+
+$dropdown-header-color:             $gray-600;
+$dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x;
+
+// Variables for the dark dropdown:
+$dropdown-dark-color:               $gray-300;
+$dropdown-dark-bg:                  $gray-800;
+$dropdown-dark-border-color:        $dropdown-border-color;
+$dropdown-dark-divider-bg:          $dropdown-divider-bg;
+$dropdown-dark-box-shadow:          null;
+$dropdown-dark-link-color:          $dropdown-dark-color;
+$dropdown-dark-link-hover-color:    $white;
+$dropdown-dark-link-hover-bg:       rgba($white, .15);
+$dropdown-dark-link-active-color:   $dropdown-link-active-color;
+$dropdown-dark-link-active-bg:      $dropdown-link-active-bg;
+$dropdown-dark-link-disabled-color: $gray-500;
+$dropdown-dark-header-color:        $gray-500;
 ```
 
 <Stories/>

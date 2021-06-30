@@ -1,7 +1,11 @@
 <script>
 export default {
   props:{
-    property: {
+    active: {
+      type: Boolean,
+      required: false,
+    },
+    divider: {
       type: Boolean,
       required: false,
     },
@@ -9,7 +13,12 @@ export default {
   computed:{
     styleClasses(){
       const vm = this
+      if(vm.divider)
+        return{
+          ['dropdown-divider']: vm.divider
+        }
       return {
+        ['dropdown-item']: true,
         [`active`]: vm.active
       }
     }
@@ -18,9 +27,12 @@ export default {
 </script>
 
 <template>
-  <li>
+  <div
+    v-if="divider"
+    :class="styleClasses"
+  />
+  <li v-else>
     <span
-      class="dropdown-item"
       :class="styleClasses"
     >
       <slot />
