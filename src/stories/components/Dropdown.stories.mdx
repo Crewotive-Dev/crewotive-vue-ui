@@ -45,8 +45,8 @@ export const Template = (args, { argTypes, ...vm }) => ({
   components: { CreDropdown, CreDropdownItem, CreButton, CreText },
   template: args.template||`
     <CreDropdown v-bind='$props'  @click='buttonClick'>
-      <CreDropdownItem :divider="n%2==0" v-for="n in 5">
-        item {{n}}
+      <CreDropdownItem :divider="n%2==0" :active="n==3" v-for="n in 5">
+        item
       </CreDropdownItem>
     </CreDropdown>
     `,
@@ -94,7 +94,7 @@ export const Template = (args, { argTypes, ...vm }) => ({
         </div>
         <CreButton type="button" variant=success >Sign in</CreButton>
       </form>
-      <div class="dropdown-divider"></div>
+      <CreDropdownItem divider/>
       <CreDropdownItem role=button class="dropdown-item">New around here? Sign up</CreDropdownItem>
       <CreDropdownItem role=button class="dropdown-item">Forgot password?</CreDropdownItem>
     </CreDropdown>

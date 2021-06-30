@@ -9,12 +9,17 @@ export default {
     variant:{
       required: false,
       type: String,
-      default: 'primary'
+      default: ''
     },
     tint: {
       required: false,
       type: [String, Number],
       default: "",
+    },
+    darkMenu:{
+      type: Boolean,
+      require: false,
+      default: false
     },
     label: {
       type: String,
@@ -46,7 +51,7 @@ export default {
     styleClasses(){
       const vm = this
       return {
-        [`btn-${vm.variant}${vm.tint && '-'+vm.tint}`]: vm.variant,
+        [`btn-${vm.variant}${(vm.tint && vm.variant!='link') ? '-'+vm.tint:''}`]: vm.variant,
         [`btn-${vm.size}`]: vm.size,
         [`dropdown-toggle`]: !vm.split
       }
@@ -54,6 +59,9 @@ export default {
   },
   watch: {
     autoClose(){
+      this.key='_'+Math.random().toString(16).substr(2,10)
+    },
+    darkMenu(){
       this.key='_'+Math.random().toString(16).substr(2,10)
     }
   }
@@ -99,7 +107,10 @@ export default {
     >
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
-    <ul class="dropdown-menu">
+    <ul
+      class="dropdown-menu"
+      :class="{[`dropdown-menu-dark`]: darkMenu}"
+    >
       <slot />
     </ul>
   </div>
