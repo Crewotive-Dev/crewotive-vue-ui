@@ -5,7 +5,7 @@ export default {
     variant: {
       required: false,
       type: String,
-      default: "primary",
+      default: "",
     },
     label: {
       required: false,
