@@ -1,5 +1,9 @@
 # Crewotive-Vue-UI
 
+## Demo
+https://www.akifaycicek.com.tr/crewotive-vue-ui/
+
+
 ## Project setup
 ```
 yarn install
