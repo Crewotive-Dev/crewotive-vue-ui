@@ -11,7 +11,11 @@ import CreBreadcrumbItem from '@/components/UI/breadcrumb/CreBreadcrumbItem.vue'
       description: {
         component: "Use Crewotive’s Breadcrumb component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
       },
-    }
+    },
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true }
+    },
   }}
   decorators={[() => ({ template: '<div class="mt-2"><story/></div>' })]}
   argTypes={{
