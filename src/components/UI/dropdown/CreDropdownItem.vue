@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'CreDropdownItem',
   props:{
     active: {
       type: Boolean,

@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'CreDropdown',
   data() {
     return {
       key: '_'+Math.random().toString(16).substr(2,10),
