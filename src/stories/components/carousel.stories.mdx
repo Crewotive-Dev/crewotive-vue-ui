@@ -53,8 +53,15 @@ export const Template = (args, { argTypes, ...vm }) => ({
 <Title/>
 <SubTitle/>
 <Description/>
-<Primary/>
-<ArgsTable story="Carousel" />
+
+<div className="row">
+  <div className="col">
+    <Primary/>
+  </div>
+  <div className="col">
+    <ArgsTable story="Carousel" />
+  </div>
+</div>
 
 ### SASS
 #### Variables

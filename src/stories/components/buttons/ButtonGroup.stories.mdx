@@ -43,7 +43,7 @@ export const Template = (args, { argTypes, ...vm }) => ({
 <div className="d-none">
 
   <Story
-    name='Horizontal' >
+    name='Button Group' >
     {Template.bind({})}
   </Story>
 
@@ -60,8 +60,15 @@ export const Template = (args, { argTypes, ...vm }) => ({
 <Title/>
 <SubTitle/>
 <Description/>
-<Primary/>
-<ArgsTable story="Horizontal" />
+
+<div className="row">
+  <div className="col">
+    <Primary/>
+  </div>
+  <div className="col">
+    <ArgsTable story="Button Group" />
+  </div>
+</div>
 
 <!-- ### SASS
 #### Variables

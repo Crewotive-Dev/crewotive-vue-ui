@@ -95,8 +95,15 @@ export const Template = (args, { argTypes, ...vm }) => ({
 <Title/>
 <SubTitle/>
 <Description/>
-<Primary/>
-<ArgsTable story="Button" />
+
+<div className="row">
+  <div className="col">
+    <Primary/>
+  </div>
+  <div className="col">
+    <ArgsTable story="Button" />
+  </div>
+</div>
 
 ### SASS
 #### Variables
