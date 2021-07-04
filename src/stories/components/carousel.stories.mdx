@@ -13,6 +13,9 @@ import CreText from '@/components/UI/CreText.vue';
     },
   }}
   argTypes={{
+    active:{
+      description: "If checked, carousel item will be active by default"
+    }
   }}
   args={{
     imgSrc: 'https://picsum.photos/500/300'
@@ -25,7 +28,7 @@ export const Template = (args, { argTypes, ...vm }) => ({
   components: { CreCarousel, CreCarouselItem, CreText },
   template: `
     <CreCarousel v-radius.10>
-      <CreCarouselItem v-bind="$props" :active="n==1" v-for='n in 3'>
+      <CreCarouselItem v-bind="$props" :active="n==2" v-for='n in 3'>
         <span slot='carousel-caption'>
           <CreText el=h4>
             Carousel {{n}}
