@@ -1,0 +1,177 @@
+import { Title, Story, Props, Canvas , Preview, Subtitle, Description, Source, Primary, ArgsTable, Stories, PRIMARY_STORY, } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions'
+
+import CreText from '@/components/UI/CreText.vue';
+import CreButton from '@/components/UI/buttons/CreButton.vue';
+import CreModal from '@/components/UI/CreModal.vue';
+
+import * as sassVariables from '@/assets/js/sassVariables.js';
+const { animationListIn, animationListOut , breakpoints } = sassVariables
+
+<Meta title="Components/Modal" component={ CreModal }
+  parameters={{
+    docs:{
+      description: {
+        component: "Use Crewotive’s modal component for actions in forms, dialogs, and more with support for multiple sizes, states, and more."
+      },
+    },
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true }
+    },
+  }}
+  argTypes={{
+    fullscreen: {
+      description: `You can create a fullscreen modal with breakpoint options`,
+      control: { type: 'select', options: [false, true,...breakpoints.filter(b=>b!='xs').map(b=>b+"-down")], labels: { true: 'Always' }}
+    },
+    size: {
+      description: `${breakpoints.join(', ')} sizes of the modal.`,
+      control: { type : 'select', options : [...breakpoints] }
+    },
+    scrollable: {
+      description: 'You can create a scrollable modal that allows scroll the modal body by setting `scrollable` to `true`.',
+    },
+    backdrop:{
+      description: "When backdrop is set to static, the modal will not close when clicking outside it.",
+      control: { type: "select", options: [false, true, 'static']}
+    },
+    animationIn: {
+      description: "Entrance animation of the modal component. Animate.css library used for the animations. You can check library details from https://animate.style/",
+      control: { type: 'select', options: ['' ,...animationListIn], labels: {['']: "none"} }
+    },
+    animationOut: {
+      description: "Outro animation of the modal component.",
+      control: { type: 'select', options: ['' ,...animationListOut], labels: {['']: "none"} }
+    }
+  }}
+  decorators={[() => ({ template: `<div class="mt-2"><story/></div>` })]}/>
+
+export const Template = (args, { argTypes, ...vm }) => ({
+  props: Object.keys(vm.parameters.component.props),
+  components: { CreModal, CreButton, CreText },
+  template: args.template||`
+    <div>
+      <CreButton
+        variant=primary
+        label="Launch backdrop modal"
+        v-modal.exampleModal
+      />
+      <CreModal id="exampleModal" v-bind="$props">
+        <template slot="modal-header">
+          <CreText el=h5 class="modal-title">Modal title</CreText>
+          <CreButton close v-modal.exampleModal aria-label="Close"/>
+        </template>
+        <template slot="modal-body">
+          <CreText el=p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere doloribus inventore eveniet hic voluptate amet accusantium! Adipisci beatae pariatur velit quaerat facilis tempora ea non vel cumque, iusto optio! Perferendis.
+          </CreText>
+        </template>
+        <template slot="modal-footer">
+          <CreButton variant-secondary v-modal.exampleModal>Close</CreButton>
+          <CreButton variant=primary >Save changes</CreButton>
+        </template>
+      </CreModal>
+    </div>
+    `,
+  methods: {
+    buttonClick: action('click')
+  }
+});
+
+
+
+
+<Title/>
+<SubTitle/>
+<Description/>
+
+<div className="row">
+  <div className="col">
+
+  <p>
+    To show modal by clicking any element you can just use <b>v-modal.ID</b> directive with element, like below
+  </p>
+
+  <Source
+    language="html"
+    code={`
+  <CreButton
+    variant=primary
+    label="Launch backdrop modal"
+    v-modal.exampleModal
+  />
+
+  <CreModal
+    id="exampleModal"
+  >...</CreModal>
+  `}
+  />
+
+  <Canvas>
+    <Story
+      name="Modal"
+      args={{
+        animationIn: 'rollIn',
+        animationOut: 'rollOut',
+      }}
+    >
+    {Template.bind({})}
+    </Story>
+  </Canvas>
+
+  </div>
+  <div className="col">
+    <ArgsTable story="Modal" />
+  </div>
+</div>
+
+### SASS
+#### Variables
+```SCSS
+$modal-inner-padding:               $spacer;
+
+$modal-footer-margin-between:       .5rem;
+
+$modal-dialog-margin:               .5rem;
+$modal-dialog-margin-y-sm-up:       1.75rem;
+
+$modal-title-line-height:           $line-height-base;
+
+$modal-content-color:               null;
+$modal-content-bg:                  $white;
+$modal-content-border-color:        rgba($black, .2);
+$modal-content-border-width:        $border-width;
+$modal-content-border-radius:       $border-radius-lg;
+$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width);
+$modal-content-box-shadow-xs:       $box-shadow-sm;
+$modal-content-box-shadow-sm-up:    $box-shadow;
+
+$modal-backdrop-bg:                 $black;
+$modal-backdrop-opacity:            .5;
+$modal-header-border-color:         $border-color;
+$modal-footer-border-color:         $modal-header-border-color;
+$modal-header-border-width:         $modal-content-border-width;
+$modal-footer-border-width:         $modal-header-border-width;
+$modal-header-padding-y:            $modal-inner-padding;
+$modal-header-padding-x:            $modal-inner-padding;
+$modal-header-padding:              $modal-header-padding-y $modal-header-padding-x; // Keep this for backwards compatibility
+
+$modal-xs:                          300px;
+$modal-sm:                          500px;
+$modal-md:                          800px;
+$modal-lg:                          950px;
+$modal-xl:                          1140px;
+
+$modal-fade-transform:              translate(0, -50px);
+$modal-show-transform:              none;
+$modal-transition:                  transform .3s ease-out;
+$modal-scale-transform:             scale(1.02);
+```
+
+<Stories/>
