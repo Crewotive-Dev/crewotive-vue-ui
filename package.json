@@ -14,6 +14,7 @@
     "deploy": "npm-run-all build-storybook deploy-storybook-ftp"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.0.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"

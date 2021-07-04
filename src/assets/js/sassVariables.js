@@ -1,4 +1,4 @@
-const variables = require('sass-extract-loader?{"includePaths": ["./node_modules/"]}!@/assets/css/ui/vendors/cre-bootstrap.scss');
+const variables = require('sass-extract-loader?{"includePaths": ["./node_modules/"]}!@/assets/css/ui/vendors/bootstrap/cre-bootstrap.scss');
 
 export const vg = variables.global
 
@@ -25,6 +25,8 @@ export function getVariable(variableName){
 
 
 // variables
+export const animationListIn = getVariable('animation-list').filter(a=>!a.includes('Out'))
+export const animationListOut = getVariable('animation-list').filter(a=>a.includes('Out'))
 export const borderWidths = getVariable('border-widths')
 export const breakpoints = getVariable('grid-breakpoints')
 export const breadcrumbDivider = getVariable('breadcrumb-divider')

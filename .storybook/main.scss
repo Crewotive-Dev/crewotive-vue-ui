@@ -1,2 +1,7 @@
-@import '../src/assets/css/ui/vendors/cre-bootstrap.scss';
+@import '../src/assets/css/ui/vendors/bootstrap/cre-bootstrap.scss';
 @import '../src/assets/css/ui/main.scss';
+
+
+.sbdocs-content{
+  max-width: none !important;
+}

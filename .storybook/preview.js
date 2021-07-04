@@ -1,4 +1,3 @@
-// import '!style-loader!css-loader!sass-loader!@/assets/css/ui/main.scss';
 import '@/directives/UI/UIDirectives.js'
 import { themes } from '@storybook/theming';
 require('./main.scss')

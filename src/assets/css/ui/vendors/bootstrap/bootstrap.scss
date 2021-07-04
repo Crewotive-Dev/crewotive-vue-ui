@@ -31,8 +31,9 @@
 @import "bootstrap/scss/offcanvas";
 
 
-@import "../components/buttons.scss";
-@import "../components/buttonGroup.scss";
+@import "../../components/buttons.scss";
+@import "../../components/buttonGroup.scss";
+@import "../../components/modal.scss";
 
 // Helpers
 @import "bootstrap/scss/helpers";
